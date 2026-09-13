@@ -1,0 +1,15 @@
+$kind: http-request
+order: 1000
+method: GET
+url: '{{base_url}}/releases/{{release_id}}'
+pathVariables:
+  - key: release_id
+    value: '249504'
+    description: 'Numeric Discogs release ID (from the discogs.com/release/<id>-... URL). Not a master ID — durations vary by pressing.'
+headers:
+  - key: User-Agent
+    value: '{{user_agent}}'
+    description: 'Discogs requires a descriptive User-Agent for all API clients'
+  - key: Authorization
+    value: 'Discogs token={{vault:discogstoken}}'
+    description: 'Discogs Personal Access Token for authenticated requests'

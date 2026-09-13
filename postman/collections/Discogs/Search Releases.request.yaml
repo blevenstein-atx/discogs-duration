@@ -1,0 +1,28 @@
+$kind: http-request
+order: 2000
+method: GET
+url: '{{base_url}}/database/search'
+queryParams:
+  - key: q
+    value: Nevermind
+    description: 'Search query (artist, title, etc.)'
+    disabled: true
+  - key: type
+    value: release
+    description: 'Restrict results to one entity type: release, master, artist, label'
+    disabled: true
+  - key: per_page
+    value: '10'
+    description: 'Results per page'
+    disabled: true
+  - key: page
+    value: '1'
+    description: 'Page number'
+    disabled: true
+headers:
+  - key: User-Agent
+    value: '{{user_agent}}'
+    description: 'Discogs requires a descriptive User-Agent for all API clients'
+  - key: Authorization
+    value: 'Discogs token={{vault:discogstoken}}'
+    description: 'Discogs Personal Access Token for authenticated requests'

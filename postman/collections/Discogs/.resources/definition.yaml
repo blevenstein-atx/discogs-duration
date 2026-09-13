@@ -1,0 +1,30 @@
+$kind: collection
+description: |-
+  Minimal API subset covering the two Discogs endpoints the discogs-duration app needs.
+
+  **Auth:** Send your personal access token as:
+  `Authorization: Discogs token=<your_token>`
+
+  Set `base_url`, `discogs_token`, and `user_agent` as collection or environment variables.
+variables:
+  - key: base_url
+    value: https://api.discogs.com
+  - key: discogs_token
+    value: ""
+  - key: user_agent
+    value: DiscogsDurationApp/0.1 +https://github.com/YOUR_USERNAME/discogs-duration
+  - key: discogs_token
+    secret: true
+    disabled: false
+    source:
+      provider: postman
+      postman:
+        type: local
+        secretId: d6514af7-5732-4795-b332-212d20c04a47
+        vaultId: local
+auth:
+  type: apikey
+  credentials:
+    key: Authorization
+    value: Discogs token={{discogs_token}}
+    in: header
