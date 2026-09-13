@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Secrets — never commit the real config
+config.js
+
+# Node (only relevant once/if you add tooling in v2)
+node_modules/
+npm-debug.log*
+
+# Editor
+.vscode/
