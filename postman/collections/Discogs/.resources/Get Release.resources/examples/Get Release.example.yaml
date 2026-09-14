@@ -1,0 +1,1320 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/releases/{{release_id}}"
+  method: GET
+  headers:
+    - key: User-Agent
+      value: "{{user_agent}}"
+      disabled: false
+      description: Discogs requires a descriptive User-Agent for all API clients
+  pathVariables:
+    - key: release_id
+      value: "249504"
+      description: Numeric Discogs release ID (from the discogs.com/release/<id>-... URL). Not a master ID — durations vary by pressing.
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    date: Sun, 13 Sep 2026 22:52:43 GMT
+    content-type: application/json
+    transfer-encoding: chunked
+    connection: keep-alive
+    content-encoding: br
+    strict-transport-security: max-age=15552000
+    vary: Accept-Encoding
+    x-discogs-ratelimit: "60"
+    x-discogs-ratelimit-remaining: "60"
+    x-discogs-ratelimit-used: "0"
+    cf-cache-status: DYNAMIC
+    server: cloudflare
+    cf-ray: a3aab9552b2e6902-DFW
+    alt-svc: h3=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      {
+        "id": 547049,
+        "status": "Accepted",
+        "year": 2005,
+        "resource_url": "https://api.discogs.com/releases/547049",
+        "uri": "https://www.discogs.com/release/547049-Gorillaz-Demon-Days",
+        "artists": [
+          {
+            "name": "Gorillaz",
+            "anv": "",
+            "join": "",
+            "role": "",
+            "tracks": "",
+            "id": 6378,
+            "resource_url": "https://api.discogs.com/artists/6378",
+            "thumbnail_url": "https://i.discogs.com/_jn9DZ9WPI1oP6lTr8D7oUYpq6NfvY8wYaj7RyqTQBc/rs:fit/g:sm/q:90/h:451/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTYzNzgt/MTc3MDE0OTg4OC0z/NTQ1LmpwZWc.jpeg"
+          }
+        ],
+        "artists_sort": "Gorillaz",
+        "labels": [
+          {
+            "name": "Virgin",
+            "catno": "7243 8 73838 2 1",
+            "entity_type": "1",
+            "entity_type_name": "Label",
+            "id": 750,
+            "resource_url": "https://api.discogs.com/labels/750",
+            "thumbnail_url": "https://i.discogs.com/l7MqdVik3dZV0Vxh1EPMGDz95ydeYSmjPKQjdwDc7uA/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTc1MC0x/NjE1MDQyNjg5LTc3/NDMucG5n.jpeg"
+          },
+          {
+            "name": "Parlophone",
+            "catno": "7243 8 73838 2 1",
+            "entity_type": "1",
+            "entity_type_name": "Label",
+            "id": 2294,
+            "resource_url": "https://api.discogs.com/labels/2294",
+            "thumbnail_url": "https://i.discogs.com/sSHvafK_7vhXYlIb4uG3obiCcc90uaIuTpImRS8a5LU/rs:fit/g:sm/q:90/h:554/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTIyOTQt/MTYxNTE5Njk3OS03/NTM4LmpwZWc.jpeg"
+          }
+        ],
+        "series": [],
+        "companies": [
+          {
+            "name": "Virgin Records America, Inc.",
+            "catno": "",
+            "entity_type": "5",
+            "entity_type_name": "Licensed To",
+            "id": 16815,
+            "resource_url": "https://api.discogs.com/labels/16815",
+            "thumbnail_url": "https://i.discogs.com/2lY7ns_zFjXpKbhFFmo-Is28OHDy1ySaOmKYYzokvnE/rs:fit/g:sm/q:90/h:325/w:324/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTE2ODE1/LTE2Mzk1OTUyNzYt/NjE0My5qcGVn.jpeg"
+          },
+          {
+            "name": "Kong Studios",
+            "catno": "",
+            "entity_type": "23",
+            "entity_type_name": "Recorded At",
+            "id": 289402,
+            "resource_url": "https://api.discogs.com/labels/289402",
+            "thumbnail_url": "https://i.discogs.com/2uLOVFqU6irSPSLTi1sU3by_drZEsOIDlFqiMmvkj7w/rs:fit/g:sm/q:90/h:195/w:508/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTI4OTQw/Mi0xMzMzMjgyMTM0/LnBuZw.jpeg"
+          },
+          {
+            "name": "13 (2)",
+            "catno": "",
+            "entity_type": "23",
+            "entity_type_name": "Recorded At",
+            "id": 278492,
+            "resource_url": "https://api.discogs.com/labels/278492",
+            "thumbnail_url": "https://i.discogs.com/y0Ipa0HzwJSjM7mmgU_KHOv1BUSlYWdOi1xn5JgG4DE/rs:fit/g:sm/q:90/h:450/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTI3ODQ5/Mi0xNjEzMDQ0NjY1/LTIzODcuanBlZw.jpeg"
+          },
+          {
+            "name": "St Stephen's Church, Canonbury",
+            "catno": "",
+            "entity_type": "23",
+            "entity_type_name": "Recorded At",
+            "id": 289401,
+            "resource_url": "https://api.discogs.com/labels/289401",
+            "thumbnail_url": "https://i.discogs.com/uGNTpmrPk9xeYfCs_Miagb5CFsAHb6ZHCjX1kh24djI/rs:fit/g:sm/q:90/h:282/w:179/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTI4OTQw/MS0xMzM1NjE3Mzcx/LmpwZWc.jpeg"
+          },
+          {
+            "name": "Pierce Rooms",
+            "catno": "",
+            "entity_type": "27",
+            "entity_type_name": "Mixed At",
+            "id": 279971,
+            "resource_url": "https://api.discogs.com/labels/279971",
+            "thumbnail_url": "https://i.discogs.com/c5fAYOlMFUVUebsvSm7NTE51d2wqDKDWzmea2DZFRD0/rs:fit/g:sm/q:90/h:464/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTI3OTk3/MS0xNzM3OTk0NDA1/LTYzMTYuanBlZw.jpeg"
+          },
+          {
+            "name": "Masterdisk",
+            "catno": "",
+            "entity_type": "29",
+            "entity_type_name": "Mastered At",
+            "id": 264111,
+            "resource_url": "https://api.discogs.com/labels/264111",
+            "thumbnail_url": "https://i.discogs.com/xACky_ehUKoqxzqTQuTQFVdck9_NLo6hwsK7-cahDs0/rs:fit/g:sm/q:90/h:200/w:200/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTI2NDEx/MS0xMzQ0MDcwODIx/LTk0MjUuanBlZw.jpeg"
+          },
+          {
+            "name": "Virgin Records",
+            "catno": "",
+            "entity_type": "10",
+            "entity_type_name": "Manufactured By",
+            "id": 108701,
+            "resource_url": "https://api.discogs.com/labels/108701",
+            "thumbnail_url": "https://i.discogs.com/DJ7Omckgx6sY41VmesjPeuZ24ieliCWBwsRJKpDZt74/rs:fit/g:sm/q:90/h:197/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTEwODcw/MS0xNDUwMjIzMDI1/LTk0MzIuanBlZw.jpeg"
+          },
+          {
+            "name": "Cinram, Richmond, IN",
+            "catno": "C50716-01",
+            "entity_type": "31",
+            "entity_type_name": "Glass Mastered At",
+            "id": 635272,
+            "resource_url": "https://api.discogs.com/labels/635272",
+            "thumbnail_url": "https://i.discogs.com/G2tM9dT_ELAM-Tl02MI_TotpF2qOqMg3gAZUgXec-8o/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTYzNTI3/Mi0xNTQ4ODMyOTEx/LTkwNzMuanBlZw.jpeg"
+          },
+          {
+            "name": "Cinram, Richmond, IN",
+            "catno": "F50407-07",
+            "entity_type": "31",
+            "entity_type_name": "Glass Mastered At",
+            "id": 635272,
+            "resource_url": "https://api.discogs.com/labels/635272",
+            "thumbnail_url": "https://i.discogs.com/G2tM9dT_ELAM-Tl02MI_TotpF2qOqMg3gAZUgXec-8o/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTYzNTI3/Mi0xNTQ4ODMyOTEx/LTkwNzMuanBlZw.jpeg"
+          },
+          {
+            "name": "Cinram, Richmond, IN",
+            "catno": "D50613-05",
+            "entity_type": "31",
+            "entity_type_name": "Glass Mastered At",
+            "id": 635272,
+            "resource_url": "https://api.discogs.com/labels/635272",
+            "thumbnail_url": "https://i.discogs.com/G2tM9dT_ELAM-Tl02MI_TotpF2qOqMg3gAZUgXec-8o/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTYzNTI3/Mi0xNTQ4ODMyOTEx/LTkwNzMuanBlZw.jpeg"
+          },
+          {
+            "name": "Cinram, Richmond, IN",
+            "catno": "E50716-04",
+            "entity_type": "31",
+            "entity_type_name": "Glass Mastered At",
+            "id": 635272,
+            "resource_url": "https://api.discogs.com/labels/635272",
+            "thumbnail_url": "https://i.discogs.com/G2tM9dT_ELAM-Tl02MI_TotpF2qOqMg3gAZUgXec-8o/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTYzNTI3/Mi0xNTQ4ODMyOTEx/LTkwNzMuanBlZw.jpeg"
+          },
+          {
+            "name": "Cinram, Richmond, IN",
+            "catno": "",
+            "entity_type": "17",
+            "entity_type_name": "Pressed By",
+            "id": 635272,
+            "resource_url": "https://api.discogs.com/labels/635272",
+            "thumbnail_url": "https://i.discogs.com/G2tM9dT_ELAM-Tl02MI_TotpF2qOqMg3gAZUgXec-8o/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTYzNTI3/Mi0xNTQ4ODMyOTEx/LTkwNzMuanBlZw.jpeg"
+          }
+        ],
+        "formats": [
+          {
+            "name": "CD",
+            "qty": "1",
+            "descriptions": [
+              "Album",
+              "Stereo"
+            ]
+          }
+        ],
+        "data_quality": "Needs Vote",
+        "community": {
+          "have": 7921,
+          "want": 1551,
+          "rating": {
+            "count": 710,
+            "average": 4.44
+          },
+          "submitter": {
+            "username": "industrialgyrl",
+            "resource_url": "https://api.discogs.com/users/industrialgyrl"
+          },
+          "contributors": [
+            {
+              "username": "industrialgyrl",
+              "resource_url": "https://api.discogs.com/users/industrialgyrl"
+            },
+            {
+              "username": "-summer-",
+              "resource_url": "https://api.discogs.com/users/-summer-"
+            },
+            {
+              "username": "Skeleton-Man",
+              "resource_url": "https://api.discogs.com/users/Skeleton-Man"
+            },
+            {
+              "username": "Joseph_S",
+              "resource_url": "https://api.discogs.com/users/Joseph_S"
+            },
+            {
+              "username": "exphile",
+              "resource_url": "https://api.discogs.com/users/exphile"
+            },
+            {
+              "username": "streppe",
+              "resource_url": "https://api.discogs.com/users/streppe"
+            },
+            {
+              "username": "Eponymous",
+              "resource_url": "https://api.discogs.com/users/Eponymous"
+            },
+            {
+              "username": "sound.and.vision",
+              "resource_url": "https://api.discogs.com/users/sound.and.vision"
+            },
+            {
+              "username": "JTWolfe",
+              "resource_url": "https://api.discogs.com/users/JTWolfe"
+            },
+            {
+              "username": "5fives5",
+              "resource_url": "https://api.discogs.com/users/5fives5"
+            },
+            {
+              "username": "hompahey",
+              "resource_url": "https://api.discogs.com/users/hompahey"
+            },
+            {
+              "username": "ivo6",
+              "resource_url": "https://api.discogs.com/users/ivo6"
+            },
+            {
+              "username": "pbwriter",
+              "resource_url": "https://api.discogs.com/users/pbwriter"
+            },
+            {
+              "username": "swbostoncd",
+              "resource_url": "https://api.discogs.com/users/swbostoncd"
+            },
+            {
+              "username": "Twentyfour7",
+              "resource_url": "https://api.discogs.com/users/Twentyfour7"
+            },
+            {
+              "username": "vsa2011",
+              "resource_url": "https://api.discogs.com/users/vsa2011"
+            },
+            {
+              "username": "bergquister",
+              "resource_url": "https://api.discogs.com/users/bergquister"
+            },
+            {
+              "username": "Sonik_Grooves",
+              "resource_url": "https://api.discogs.com/users/Sonik_Grooves"
+            },
+            {
+              "username": "eliseucarvalho1983",
+              "resource_url": "https://api.discogs.com/users/eliseucarvalho1983"
+            },
+            {
+              "username": "blackbookpress",
+              "resource_url": "https://api.discogs.com/users/blackbookpress"
+            },
+            {
+              "username": "jgrizzly",
+              "resource_url": "https://api.discogs.com/users/jgrizzly"
+            },
+            {
+              "username": "CykoMF",
+              "resource_url": "https://api.discogs.com/users/CykoMF"
+            },
+            {
+              "username": "radiofuturamusic",
+              "resource_url": "https://api.discogs.com/users/radiofuturamusic"
+            },
+            {
+              "username": "amoebasinger",
+              "resource_url": "https://api.discogs.com/users/amoebasinger"
+            },
+            {
+              "username": "murkywater",
+              "resource_url": "https://api.discogs.com/users/murkywater"
+            },
+            {
+              "username": "kaynaky",
+              "resource_url": "https://api.discogs.com/users/kaynaky"
+            },
+            {
+              "username": "powerstone05",
+              "resource_url": "https://api.discogs.com/users/powerstone05"
+            },
+            {
+              "username": "Nikostormkilla",
+              "resource_url": "https://api.discogs.com/users/Nikostormkilla"
+            },
+            {
+              "username": "Pokelord15",
+              "resource_url": "https://api.discogs.com/users/Pokelord15"
+            },
+            {
+              "username": "zmathiasz",
+              "resource_url": "https://api.discogs.com/users/zmathiasz"
+            },
+            {
+              "username": "Plainsong_Media",
+              "resource_url": "https://api.discogs.com/users/Plainsong_Media"
+            },
+            {
+              "username": "Stereomonic",
+              "resource_url": "https://api.discogs.com/users/Stereomonic"
+            },
+            {
+              "username": "MrPizzaBoxMan",
+              "resource_url": "https://api.discogs.com/users/MrPizzaBoxMan"
+            },
+            {
+              "username": "confoundry",
+              "resource_url": "https://api.discogs.com/users/confoundry"
+            },
+            {
+              "username": "rhodil",
+              "resource_url": "https://api.discogs.com/users/rhodil"
+            },
+            {
+              "username": "earlyadoptr",
+              "resource_url": "https://api.discogs.com/users/earlyadoptr"
+            },
+            {
+              "username": "davesdreamer",
+              "resource_url": "https://api.discogs.com/users/davesdreamer"
+            }
+          ],
+          "data_quality": "Needs Vote",
+          "status": "Accepted"
+        },
+        "format_quantity": 1,
+        "date_added": "2005-10-22T03:45:37-07:00",
+        "date_changed": "2025-06-17T06:42:31-07:00",
+        "num_for_sale": 23,
+        "lowest_price": 2,
+        "master_id": 58002,
+        "master_url": "https://api.discogs.com/masters/58002",
+        "title": "Demon Days",
+        "country": "US",
+        "released": "2005-05-24",
+        "notes": "Tracks 14 and 15: Choir recorded at St Stephen's Church Canonbury.  Mixed at Pierce Rooms London.\nMother / Stamper values in matrix (MxSx) are mechanically etched, as is typical. Mastering SID Code for Variants 1, 4, 6-9, and 15-16 do not include \"IFPI\".",
+        "released_formatted": "24 May 2005",
+        "identifiers": [
+          {
+            "type": "Barcode",
+            "value": "724387383821",
+            "description": "Scanned"
+          },
+          {
+            "type": "Barcode",
+            "value": "7 2438-73838-2 1",
+            "description": "Text"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 C50716-01 M1S4",
+            "description": "Variant 1"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "L385",
+            "description": "Variant 1"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "ifpi 1685",
+            "description": "Variant 1"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 C50716-01",
+            "description": "Variant 2"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "IFPI L385",
+            "description": "Variant 2"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 1693",
+            "description": "Variant 2"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 F50407-07",
+            "description": "Variant 3"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "IFPI L384",
+            "description": "Variant 3"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 1690",
+            "description": "Variant 3"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "L388 A 7301 724387383821 D50613-05 M1S1",
+            "description": "Variant 4"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "L388",
+            "description": "Variant 4"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": " IFPI 1688",
+            "description": "Variant 4"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 F50407-07 M1S11",
+            "description": "Variant 5"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "IFPI L384",
+            "description": "Variant 5"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 6100",
+            "description": "Variant 5"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 F50407-07 M2S6",
+            "description": "Variant 6"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "L384",
+            "description": "Variant 6"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 6100",
+            "description": "Variant 6"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 C50716-01 M1S1",
+            "description": "Variant 7"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "L385",
+            "description": "Variant 7"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 1688",
+            "description": "Variant 7"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 D50613-05 M1S7",
+            "description": "Variant 8"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "L388",
+            "description": "Variant 8"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "ifpi 1681",
+            "description": "Variant 8"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 C50716-01",
+            "description": "Variant 9"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "L385",
+            "description": "Variant 9"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 168A",
+            "description": "Variant 9"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 E50716-04 M1S2",
+            "description": "Variant 10"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "<no Mastering SID Code>",
+            "description": "Variant 10"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 6100",
+            "description": "Variant 10"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 C50716-01",
+            "description": "Variant 11"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "IFPI L385",
+            "description": "Variant 11"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 6100",
+            "description": "Variant 11"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 E50716-04 MS28",
+            "description": "Variant 12"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "IFPI L383",
+            "description": "Variant 12"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 6100",
+            "description": "Variant 12"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 D50613-05 M1S6",
+            "description": "Variant 13"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "IFPI L383",
+            "description": "Variant 13"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 6100",
+            "description": "Variant 13"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 F50407-07 M1S8",
+            "description": "Variant 14"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "IFPI L384",
+            "description": "Variant 14"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 6100",
+            "description": "Variant 14"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 E50716-04 M1S5",
+            "description": "Variant 15"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "L383",
+            "description": "Variant 15"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 6100",
+            "description": "Variant 15"
+          },
+          {
+            "type": "Matrix / Runout",
+            "value": "A 7301 724387383821 F50407-07 M1S3",
+            "description": "Variant 16"
+          },
+          {
+            "type": "Mastering SID Code",
+            "value": "L384",
+            "description": "Variant 16"
+          },
+          {
+            "type": "Mould SID Code",
+            "value": "IFPI 6100",
+            "description": "Variant 16"
+          }
+        ],
+        "videos": [
+          {
+            "uri": "https://www.youtube.com/watch?v=HyHNuVaZJ-k",
+            "title": "Gorillaz - Feel Good Inc. (Official Video)",
+            "description": "Official HD Video for Gorillaz' fantastic track Feel Good Inc.\n\nFollow Gorillaz online:\nhttp://gorillaz.com\nhttp://facebook.com/Gorillaz\nhttp://twitter.com/GorillazBand\nhttp://instagram/Gorillaz\n\nFor more information on Gorillaz don't forget to check out ",
+            "duration": 254,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=uAOR6ib95kQ",
+            "title": "Gorillaz - DARE (Official Video)",
+            "description": "Follow Gorillaz online:\nhttp://gorillaz.com \nhttp://facebook.com/Gorillaz\nhttp://twitter.com/GorillazBand\nhttps://instagram.com/gorillaz\n\nStream Gorillaz on Spotify: http://bit.ly/1kvIyPR\n\nMusic video by Gorillaz performing DARE. (P) 2005 The copyright in",
+            "duration": 288,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=cLnkQAeMbIM",
+            "title": "Gorillaz - Dirty Harry (Official Video)",
+            "description": "Follow Gorillaz online:\nhttp://gorillaz.com \nhttp://facebook.com/Gorillaz\nhttp://twitter.com/GorillazBand\nhttps://instagram.com/gorillaz\n\nStream Gorillaz on Spotify: http://bit.ly/1kvIyPR \n\nMusic video by Gorillaz performing Dirty Harry. (P) 2005 The copy",
+            "duration": 301,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=VCkFSe3voRc",
+            "title": "Gorillaz - Kids With Guns (Official Video)",
+            "description": "Follow Gorillaz online:\nhttp://gorillaz.com \nhttp://facebook.com/Gorillaz\nhttp://twitter.com/GorillazBand\nhttps://instagram.com/gorillaz\n\nStream Gorillaz on Spotify: http://bit.ly/1kvIyPR\n\nMusic video by Gorillaz performing Kids With Guns. (P) 2006 The co",
+            "duration": 227,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=hji4gBuOvIQ",
+            "title": "Gorillaz - El Mañana (Official Video)",
+            "description": "Follow Gorillaz online:\nhttp://gorillaz.com \nhttp://facebook.com/Gorillaz\nhttp://twitter.com/GorillazBand\nhttps://instagram.com/gorillaz\n\nStream Gorillaz on Spotify: http://bit.ly/1kvIyPR\nMusic video by Gorillaz performing El Mañana. (P) 2006 The copyrigh",
+            "duration": 234,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=N5Om4pHQzrs",
+            "title": "Gorillaz - The Swagga (Official Audio)",
+            "description": "Follow Gorillaz online:\nhttp://gorillaz.com \nhttp://facebook.com/Gorillaz\nhttp://twitter.com/GorillazBand\nhttps://instagram.com/gorillaz\n\nStream Gorillaz on Spotify: http://bit.ly/1kvIyPR\n\nOfficial HD audio for the Gorillaz track The Swagga.",
+            "duration": 297,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=MRyPSOyC7_c",
+            "title": "Gorillaz - Feel Good Inc (Animatic)",
+            "description": "Follow Gorillaz online:\nhttp://gorillaz.com \nhttp://facebook.com/Gorillaz\nhttp://twitter.com/GorillazBand\nhttps://instagram.com/gorillaz\n\nStream Gorillaz on Spotify: http://bit.ly/1kvIyPR\n\nAnimatic version of the Gorillaz track Feel Good Inc.",
+            "duration": 229,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=lyBQR8xrcNE",
+            "title": "Gorillaz - Feel Good Inc. (Commentary) (HD)",
+            "description": "Official HD Promo Video with commentary for Gorillaz' fantastic track Feel Good Inc.\nSign up to win limited edition 7\" boxset & deluxe CD here: http://smarturl.it/WinGorillazyeaaahhh?IQid=vevo\nListen to clips from Gorillaz & download/buy the tunes online ",
+            "duration": 250,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=GLbBH_LE1sw",
+            "title": "Gorillaz Talent Quest",
+            "description": "One of the three Bonus Videos on \"Demon Days\"\r\n\r\nAn Announcement by the four band-members from \"Gorillaz\"",
+            "duration": 38,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=7rxAXd_ePpk",
+            "title": "Gorillaz - On Set (G-Bite)",
+            "description": "Taken from Demon Days (Japanese Edition)",
+            "duration": 29,
+            "embed": true
+          },
+          {
+            "uri": "https://www.youtube.com/watch?v=TSfODSGxBzA",
+            "title": "Gorillaz - Happy Landfill (From the Early Phase 2 of the Kong Studios Website)",
+            "description": "",
+            "duration": 90,
+            "embed": true
+          }
+        ],
+        "genres": [
+          "Electronic",
+          "Hip Hop",
+          "Rock",
+          "Funk / Soul"
+        ],
+        "styles": [
+          "Leftfield",
+          "Trip Hop",
+          "Pop Rap",
+          "Pop Rock",
+          "Downtempo",
+          "Funk"
+        ],
+        "tracklist": [
+          {
+            "position": "1",
+            "type_": "track",
+            "title": "Intro",
+            "duration": "1:03"
+          },
+          {
+            "position": "2",
+            "type_": "track",
+            "title": "Last Living Souls",
+            "duration": "3:10"
+          },
+          {
+            "position": "3",
+            "type_": "track",
+            "title": "Kids With Guns",
+            "extraartists": [
+              {
+                "name": "Neneh Cherry",
+                "anv": "",
+                "join": "",
+                "role": "Vocals [Additional]",
+                "tracks": "",
+                "id": 11449,
+                "resource_url": "https://api.discogs.com/artists/11449"
+              }
+            ],
+            "duration": "3:45"
+          },
+          {
+            "position": "4",
+            "type_": "track",
+            "title": "O Green World",
+            "duration": "4:32"
+          },
+          {
+            "position": "5",
+            "type_": "track",
+            "title": "Dirty Harry",
+            "extraartists": [
+              {
+                "name": "San Fernandez Youth Chorus",
+                "anv": "",
+                "join": "",
+                "role": "Choir",
+                "tracks": "",
+                "id": 314330,
+                "resource_url": "https://api.discogs.com/artists/314330"
+              },
+              {
+                "name": "Bootie Brown",
+                "anv": "",
+                "join": "",
+                "role": "Featuring",
+                "tracks": "",
+                "id": 181647,
+                "resource_url": "https://api.discogs.com/artists/181647"
+              }
+            ],
+            "duration": "3:43"
+          },
+          {
+            "position": "6",
+            "type_": "track",
+            "title": "Feel Good Inc.",
+            "extraartists": [
+              {
+                "name": "De La Soul",
+                "anv": "",
+                "join": "",
+                "role": "Featuring",
+                "tracks": "",
+                "id": 4091,
+                "resource_url": "https://api.discogs.com/artists/4091"
+              }
+            ],
+            "duration": "3:41"
+          },
+          {
+            "position": "7",
+            "type_": "track",
+            "title": "El Mañana",
+            "extraartists": [
+              {
+                "name": "Antonia Pagulatos",
+                "anv": "",
+                "join": "",
+                "role": "Violin",
+                "tracks": "",
+                "id": 387483,
+                "resource_url": "https://api.discogs.com/artists/387483"
+              }
+            ],
+            "duration": "3:50"
+          },
+          {
+            "position": "8",
+            "type_": "track",
+            "title": "Every Planet We Reach Is Dead",
+            "extraartists": [
+              {
+                "name": "Ike Turner",
+                "anv": "",
+                "join": "",
+                "role": "Piano",
+                "tracks": "",
+                "id": 238213,
+                "resource_url": "https://api.discogs.com/artists/238213"
+              }
+            ],
+            "duration": "4:53"
+          },
+          {
+            "position": "9",
+            "type_": "track",
+            "title": "November Has Come",
+            "extraartists": [
+              {
+                "name": "MF Doom",
+                "anv": "",
+                "join": "",
+                "role": "Featuring",
+                "tracks": "",
+                "id": 25058,
+                "resource_url": "https://api.discogs.com/artists/25058"
+              }
+            ],
+            "duration": "2:41"
+          },
+          {
+            "position": "10",
+            "type_": "track",
+            "title": "All Alone",
+            "extraartists": [
+              {
+                "name": "Roots Manuva",
+                "anv": "",
+                "join": "",
+                "role": "Featuring",
+                "tracks": "",
+                "id": 2194,
+                "resource_url": "https://api.discogs.com/artists/2194"
+              },
+              {
+                "name": "Martina Topley-Bird",
+                "anv": "",
+                "join": "",
+                "role": "Vocals [Additional]",
+                "tracks": "",
+                "id": 32025,
+                "resource_url": "https://api.discogs.com/artists/32025"
+              }
+            ],
+            "duration": "3:30"
+          },
+          {
+            "position": "11",
+            "type_": "track",
+            "title": "White Light",
+            "duration": "2:08"
+          },
+          {
+            "position": "12",
+            "type_": "track",
+            "title": "Dare",
+            "extraartists": [
+              {
+                "name": "Rosie Wilson",
+                "anv": "",
+                "join": "",
+                "role": "Backing Vocals",
+                "tracks": "",
+                "id": 319665,
+                "resource_url": "https://api.discogs.com/artists/319665"
+              },
+              {
+                "name": "Shaun Ryder",
+                "anv": "",
+                "join": "",
+                "role": "Featuring",
+                "tracks": "",
+                "id": 42069,
+                "resource_url": "https://api.discogs.com/artists/42069"
+              }
+            ],
+            "duration": "4:04"
+          },
+          {
+            "position": "13",
+            "type_": "track",
+            "title": "Fire Coming Out Of The Monkey's Head",
+            "extraartists": [
+              {
+                "name": "Dennis Hopper (2)",
+                "anv": "",
+                "join": "",
+                "role": "Narrator",
+                "tracks": "",
+                "id": 319667,
+                "resource_url": "https://api.discogs.com/artists/319667"
+              }
+            ],
+            "duration": "3:16"
+          },
+          {
+            "position": "14",
+            "type_": "track",
+            "title": "Don't Get Lost In Heaven",
+            "extraartists": [
+              {
+                "name": "London Community Gospel Choir",
+                "anv": "",
+                "join": "",
+                "role": "Choir",
+                "tracks": "",
+                "id": 170884,
+                "resource_url": "https://api.discogs.com/artists/170884"
+              },
+              {
+                "name": "Danger Mouse",
+                "anv": "",
+                "join": "",
+                "role": "Mixed By [Choir]",
+                "tracks": "",
+                "id": 109129,
+                "resource_url": "https://api.discogs.com/artists/109129"
+              },
+              {
+                "name": "Gorillaz",
+                "anv": "",
+                "join": "",
+                "role": "Mixed By [Choir]",
+                "tracks": "",
+                "id": 6378,
+                "resource_url": "https://api.discogs.com/artists/6378"
+              },
+              {
+                "name": "Jason Cox",
+                "anv": "",
+                "join": "",
+                "role": "Mixed By [Choir]",
+                "tracks": "",
+                "id": 270552,
+                "resource_url": "https://api.discogs.com/artists/270552"
+              }
+            ],
+            "duration": "2:00"
+          },
+          {
+            "position": "15",
+            "type_": "track",
+            "title": "Demon Days",
+            "extraartists": [
+              {
+                "name": "London Community Gospel Choir",
+                "anv": "",
+                "join": "",
+                "role": "Choir",
+                "tracks": "",
+                "id": 170884,
+                "resource_url": "https://api.discogs.com/artists/170884"
+              },
+              {
+                "name": "Danger Mouse",
+                "anv": "",
+                "join": "",
+                "role": "Mixed By [Choir]",
+                "tracks": "",
+                "id": 109129,
+                "resource_url": "https://api.discogs.com/artists/109129"
+              },
+              {
+                "name": "Gorillaz",
+                "anv": "",
+                "join": "",
+                "role": "Mixed By [Choir]",
+                "tracks": "",
+                "id": 6378,
+                "resource_url": "https://api.discogs.com/artists/6378"
+              },
+              {
+                "name": "Jason Cox",
+                "anv": "",
+                "join": "",
+                "role": "Mixed By [Choir]",
+                "tracks": "",
+                "id": 270552,
+                "resource_url": "https://api.discogs.com/artists/270552"
+              }
+            ],
+            "duration": "4:28"
+          }
+        ],
+        "extraartists": [
+          {
+            "name": "Jamie Hewlett",
+            "anv": "J.C. Hewlett",
+            "join": "",
+            "role": "Artwork",
+            "tracks": "",
+            "id": 409163,
+            "resource_url": "https://api.discogs.com/artists/409163"
+          },
+          {
+            "name": "Zombie Flesh Eaters",
+            "anv": "",
+            "join": "",
+            "role": "Artwork",
+            "tracks": "",
+            "id": 2159873,
+            "resource_url": "https://api.discogs.com/artists/2159873"
+          },
+          {
+            "name": "Isabelle Dunn",
+            "anv": "",
+            "join": "",
+            "role": "Cello",
+            "tracks": "2, 5, 7, 8, 10, 15",
+            "id": 229655,
+            "resource_url": "https://api.discogs.com/artists/229655"
+          },
+          {
+            "name": "Al Mobbs",
+            "anv": "",
+            "join": "",
+            "role": "Double Bass",
+            "tracks": "",
+            "id": 319666,
+            "resource_url": "https://api.discogs.com/artists/319666"
+          },
+          {
+            "name": "Emma Smith",
+            "anv": "",
+            "join": "",
+            "role": "Double Bass",
+            "tracks": "2, 5, 7, 8, 10, 15",
+            "id": 319663,
+            "resource_url": "https://api.discogs.com/artists/319663"
+          },
+          {
+            "name": "Jason Cox",
+            "anv": "",
+            "join": "",
+            "role": "Engineer",
+            "tracks": "",
+            "id": 270552,
+            "resource_url": "https://api.discogs.com/artists/270552"
+          },
+          {
+            "name": "Simon Tong",
+            "anv": "",
+            "join": "",
+            "role": "Guitar [Additional]",
+            "tracks": "2, 4, 6, 7, 10",
+            "id": 317702,
+            "resource_url": "https://api.discogs.com/artists/317702"
+          },
+          {
+            "name": "CMO Management International",
+            "anv": "",
+            "join": "",
+            "role": "Management",
+            "tracks": "",
+            "id": 2004069,
+            "resource_url": "https://api.discogs.com/artists/2004069"
+          },
+          {
+            "name": "Howie Weinberg",
+            "anv": "",
+            "join": "",
+            "role": "Mastered By",
+            "tracks": "",
+            "id": 254262,
+            "resource_url": "https://api.discogs.com/artists/254262"
+          },
+          {
+            "name": "Stephen Sedgwick",
+            "anv": "Steve Sedgwick",
+            "join": "",
+            "role": "Mixed By [Assistant]",
+            "tracks": "",
+            "id": 1751458,
+            "resource_url": "https://api.discogs.com/artists/1751458"
+          },
+          {
+            "name": "Danger Mouse",
+            "anv": "",
+            "join": "",
+            "role": "Producer",
+            "tracks": "",
+            "id": 109129,
+            "resource_url": "https://api.discogs.com/artists/109129"
+          },
+          {
+            "name": "Gorillaz",
+            "anv": "",
+            "join": "",
+            "role": "Producer",
+            "tracks": "",
+            "id": 6378,
+            "resource_url": "https://api.discogs.com/artists/6378"
+          },
+          {
+            "name": "James Dring",
+            "anv": "",
+            "join": "",
+            "role": "Producer",
+            "tracks": "",
+            "id": 317701,
+            "resource_url": "https://api.discogs.com/artists/317701"
+          },
+          {
+            "name": "Jason Cox",
+            "anv": "",
+            "join": "",
+            "role": "Producer",
+            "tracks": "",
+            "id": 270552,
+            "resource_url": "https://api.discogs.com/artists/270552"
+          },
+          {
+            "name": "James Dring",
+            "anv": "",
+            "join": "",
+            "role": "Programmed By",
+            "tracks": "",
+            "id": 317701,
+            "resource_url": "https://api.discogs.com/artists/317701"
+          },
+          {
+            "name": "Will Street",
+            "anv": "",
+            "join": "",
+            "role": "Recorded By [Assistant]",
+            "tracks": "",
+            "id": 534751,
+            "resource_url": "https://api.discogs.com/artists/534751"
+          },
+          {
+            "name": "Amanda Drummond",
+            "anv": "",
+            "join": "",
+            "role": "Viola",
+            "tracks": "2, 5, 7, 8, 10, 15",
+            "id": 319664,
+            "resource_url": "https://api.discogs.com/artists/319664"
+          },
+          {
+            "name": "Stella Page",
+            "anv": "",
+            "join": "",
+            "role": "Viola",
+            "tracks": "2, 5, 7, 8, 10, 15",
+            "id": 229659,
+            "resource_url": "https://api.discogs.com/artists/229659"
+          },
+          {
+            "name": "Prabjote Osahn",
+            "anv": "",
+            "join": "",
+            "role": "Violin",
+            "tracks": "2, 5, 8, 10, 15",
+            "id": 258248,
+            "resource_url": "https://api.discogs.com/artists/258248"
+          },
+          {
+            "name": "Sally Jackson",
+            "anv": "",
+            "join": "",
+            "role": "Violin",
+            "tracks": "2, 5, 7, 8, 10, 15",
+            "id": 319662,
+            "resource_url": "https://api.discogs.com/artists/319662"
+          }
+        ],
+        "images": [
+          {
+            "type": "primary",
+            "uri": "https://i.discogs.com/bDcBuVv66nG5RBSKSUaCsdLng4lJ77tqBo_L_6EYUsw/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xMjYzNTcxOTQw/LmpwZWc.jpeg",
+            "resource_url": "https://i.discogs.com/bDcBuVv66nG5RBSKSUaCsdLng4lJ77tqBo_L_6EYUsw/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xMjYzNTcxOTQw/LmpwZWc.jpeg",
+            "uri150": "https://i.discogs.com/f8EYmpb6u1c8nYgib_gZtHIBYBHBSvR1gj1NHQncyPU/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xMjYzNTcxOTQw/LmpwZWc.jpeg",
+            "width": 600,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/37GTmN4HNzSbVen_jHd0hW71p4L6c7zMEGBRjTVD74A/rs:fit/g:sm/q:90/h:459/w:591/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xMTQ5OTkzMDc2/LmpwZWc.jpeg",
+            "resource_url": "https://i.discogs.com/37GTmN4HNzSbVen_jHd0hW71p4L6c7zMEGBRjTVD74A/rs:fit/g:sm/q:90/h:459/w:591/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xMTQ5OTkzMDc2/LmpwZWc.jpeg",
+            "uri150": "https://i.discogs.com/vGGxM5-WxKaPKs_M3v1ti-vVCPJBY7zCnUuIzHOBg3M/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xMTQ5OTkzMDc2/LmpwZWc.jpeg",
+            "width": 591,
+            "height": 459
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/-qYPE_yfHH7xQrtpev4a4qp6sjcg5v5snHjodE-Xw5I/rs:fit/g:sm/q:90/h:600/w:591/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTM4Nzg1MTM0/LTM4MDYuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/-qYPE_yfHH7xQrtpev4a4qp6sjcg5v5snHjodE-Xw5I/rs:fit/g:sm/q:90/h:600/w:591/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTM4Nzg1MTM0/LTM4MDYuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/Neu6khDnRT9LZLGpkmO8ePED6fZ_JxdjlcLZRSbfuGA/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTM4Nzg1MTM0/LTM4MDYuanBlZw.jpeg",
+            "width": 591,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/jje-tuCsU3c2Ndcq9XryE2qi-X-7niTHclMhYdqbPl4/rs:fit/g:sm/q:90/h:562/w:563/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTEzNTMyNzIy/LTk2NTUuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/jje-tuCsU3c2Ndcq9XryE2qi-X-7niTHclMhYdqbPl4/rs:fit/g:sm/q:90/h:562/w:563/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTEzNTMyNzIy/LTk2NTUuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/CsQr9G1U_grs2mG_Z9EP1yeHgYZMWxdzCyVFzwvszd8/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTEzNTMyNzIy/LTk2NTUuanBlZw.jpeg",
+            "width": 563,
+            "height": 562
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/1EKgMQMU_bfEX-1E_2brbMty6G8vumKI_XQJ5RXCnc0/rs:fit/g:sm/q:90/h:593/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTM4Nzg1MTM0/LTgzOTQuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/1EKgMQMU_bfEX-1E_2brbMty6G8vumKI_XQJ5RXCnc0/rs:fit/g:sm/q:90/h:593/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTM4Nzg1MTM0/LTgzOTQuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/2awALz38M9LWEwX3-kTIHIormOw8_3ctwiR-7gyB9Nw/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTM4Nzg1MTM0/LTgzOTQuanBlZw.jpeg",
+            "width": 600,
+            "height": 593
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/R2oqb0bacRxjx8Cy1roDMGrJjXDD0Mt5EraWMbU30Ns/rs:fit/g:sm/q:90/h:600/w:297/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTE0MzcuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/R2oqb0bacRxjx8Cy1roDMGrJjXDD0Mt5EraWMbU30Ns/rs:fit/g:sm/q:90/h:600/w:297/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTE0MzcuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/R4K_9La_5YFEFDuGZSglFS1tyeLUKBzqR5NlSwU5j94/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTE0MzcuanBlZw.jpeg",
+            "width": 297,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/etj1glUo6WKukPXhLVpn1gDo3sVuAEVpmjuTWkIaqNU/rs:fit/g:sm/q:90/h:600/w:297/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTI1MDMuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/etj1glUo6WKukPXhLVpn1gDo3sVuAEVpmjuTWkIaqNU/rs:fit/g:sm/q:90/h:600/w:297/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTI1MDMuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/NwnbmOj_NWDqv4Bt-hFEdjU2-upJGRtnAz9sZ3QAYUY/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTI1MDMuanBlZw.jpeg",
+            "width": 297,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/cg5tHuOZXJo4tXU9GFV8g8WHdyrVWPziBWwzMQlx5rY/rs:fit/g:sm/q:90/h:600/w:313/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTc2MDQuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/cg5tHuOZXJo4tXU9GFV8g8WHdyrVWPziBWwzMQlx5rY/rs:fit/g:sm/q:90/h:600/w:313/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTc2MDQuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/H3UAB2EnYLw1DXX_l-h0YFzqCqUXo5E6SsW5TjiLCVw/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTc2MDQuanBlZw.jpeg",
+            "width": 313,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/_gHdUjEAHitIKIHDMs7y2waE9R5M7RWTXzn3QBy5cu4/rs:fit/g:sm/q:90/h:600/w:323/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTczMTkuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/_gHdUjEAHitIKIHDMs7y2waE9R5M7RWTXzn3QBy5cu4/rs:fit/g:sm/q:90/h:600/w:323/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTczMTkuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/2GdNCDB9oRcYmXwh_OMQsBwsQ7ZTX_TLPznUSlTJfok/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNTg1MzQ4NzUz/LTczMTkuanBlZw.jpeg",
+            "width": 323,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/BHKP2W0_dNBX4fZsNsnaaAogxOUJm-s2gpB7NWbHOsU/rs:fit/g:sm/q:90/h:600/w:552/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUx/LTUwOTEuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/BHKP2W0_dNBX4fZsNsnaaAogxOUJm-s2gpB7NWbHOsU/rs:fit/g:sm/q:90/h:600/w:552/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUx/LTUwOTEuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/VXqP5Jh7RNmCMERIvnKP7Y3RPHPfa1NxYznNmTZdmrI/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUx/LTUwOTEuanBlZw.jpeg",
+            "width": 552,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/vHzyxJ5fUYAt2r0mMaWkVlssWTBoSuR2nl4AV1Zl33Y/rs:fit/g:sm/q:90/h:600/w:564/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUx/LTkzNDEuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/vHzyxJ5fUYAt2r0mMaWkVlssWTBoSuR2nl4AV1Zl33Y/rs:fit/g:sm/q:90/h:600/w:564/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUx/LTkzNDEuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/YMpnwNL47s6pMTwOQTQakwh6cHE1wOQhxXCQj63c-dg/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUx/LTkzNDEuanBlZw.jpeg",
+            "width": 564,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/udeq2OFbfN41B-nJ6RZfqsFhmkzJqBky9LISprxTvGw/rs:fit/g:sm/q:90/h:600/w:567/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUw/LTU1NjYuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/udeq2OFbfN41B-nJ6RZfqsFhmkzJqBky9LISprxTvGw/rs:fit/g:sm/q:90/h:600/w:567/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUw/LTU1NjYuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/WkOMM8hR9_KE5JGoP2dKDbP1s5u5YeEmKJqkQloM3KE/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUw/LTU1NjYuanBlZw.jpeg",
+            "width": 567,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/4KMtiwr0BSFWL7olNNvehYsHw6dYz7oMBYV9EWhjMFo/rs:fit/g:sm/q:90/h:600/w:568/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUx/LTc3MTAuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/4KMtiwr0BSFWL7olNNvehYsHw6dYz7oMBYV9EWhjMFo/rs:fit/g:sm/q:90/h:600/w:568/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUx/LTc3MTAuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/6ErgkCQkjutp-d0wXAnhkaYEP_rL80HODAnTvU1TpvU/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUx/LTc3MTAuanBlZw.jpeg",
+            "width": 568,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/s4uOqDQFkDjMS4QxPwPCTSJ65ZoPQ6OVhANLMJpaOHQ/rs:fit/g:sm/q:90/h:600/w:573/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUz/LTY0OTQuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/s4uOqDQFkDjMS4QxPwPCTSJ65ZoPQ6OVhANLMJpaOHQ/rs:fit/g:sm/q:90/h:600/w:573/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUz/LTY0OTQuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/N_845o6yMP9xJvMEucCYOpPDr68TtNmeu4PJjeme-vI/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUz/LTY0OTQuanBlZw.jpeg",
+            "width": 573,
+            "height": 600
+          },
+          {
+            "type": "secondary",
+            "uri": "https://i.discogs.com/gqssfVQ2OofYp_AXZVe14hRXwSNTuWzGmY_7FRgOfI8/rs:fit/g:sm/q:90/h:600/w:594/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUw/LTg1MzcuanBlZw.jpeg",
+            "resource_url": "https://i.discogs.com/gqssfVQ2OofYp_AXZVe14hRXwSNTuWzGmY_7FRgOfI8/rs:fit/g:sm/q:90/h:600/w:594/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUw/LTg1MzcuanBlZw.jpeg",
+            "uri150": "https://i.discogs.com/-6Nw8JnOVZNxu2Q08_qFseJv_-jrZmXwz9PtmvUwn30/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xNjY0NzY5NzUw/LTg1MzcuanBlZw.jpeg",
+            "width": 594,
+            "height": 600
+          }
+        ],
+        "thumb": "https://i.discogs.com/f8EYmpb6u1c8nYgib_gZtHIBYBHBSvR1gj1NHQncyPU/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU0NzA0/OS0xMjYzNTcxOTQw/LmpwZWc.jpeg",
+        "estimated_weight": 85,
+        "blocked_from_sale": false,
+        "is_offensive": false
+      }
+order: 1789339966727
