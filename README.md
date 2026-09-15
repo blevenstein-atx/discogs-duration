@@ -11,7 +11,7 @@ A small web app that takes a Discogs release (URL or release ID) and calculates 
 - App displays the total running time, with handling for common edge cases (missing/incomplete track times, multi-disc releases).
 - Public Discogs data only — no login, no access to the user's own Discogs account.
 
-Full scope, including the planned 2.0 and future roadmap, is in [`Docs/scope.md`](Docs/scope.md). Detailed MVP requirements (use cases, error handling) are in [`Docs/discogs_duration_PRD.md`](Docs/discogs_duration_PRD.md).
+Full scope, including the planned 2.0 and future roadmap, is in [`Docs/scope.md`](Docs/scope.md). A detailed MVP requirements doc (use cases, error handling) is in progress and will be linked here once it's committed.
 
 ## Planned MVP architecture
 
