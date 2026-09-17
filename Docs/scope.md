@@ -27,3 +27,5 @@
 - Ability to augment missing Discogs track duration data with other sources, such as Wikipedia
 - Explore the idea of a browser extension that sends the currently viewed Discogs release URL directly into the app
 - Basic APM tooling — not needed for a personal project, but a good opportunity to learn how it's set up
+- Basic API request/response logging (e.g. to Postgres), as a first step toward the APM item above and a foundation for later reports/analytics on usage. Depends on the AWS backend from 2.0 already existing — a static/no-backend app can't write to a database directly from the browser without exposing database credentials to every visitor
+- Reports and analytics built on top of the API logging above, once there's real logged data to work with
