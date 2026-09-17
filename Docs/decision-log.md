@@ -98,6 +98,11 @@ A running record of questions, decisions, and reasoning behind this project's to
 **Decision:** Yes — spelling/typo pass committed, no content changes except restoring one accidentally-dropped word ("does **not** calculate...") and fixing a skipped use-case step number.<br>
 **Reasoning:** Requested as a distinct cleanup pass, separate from the substantive requirements review above.
 
+### 2026-09-17 — Requirements / Scope<br>
+**Question:** A real PRD would normally include non-functional requirements (performance, traceability, observability, logging) — worth including for this personal MVP?<br>
+**Decision:** Not for MVP. Added to Future scope instead: basic API request/response logging (e.g. to Postgres), plus reports/analytics built on top of that logging once it exists.<br>
+**Reasoning:** Full NFR treatment isn't warranted for a personal project's MVP, but logging is a reasonable, well-scoped stepping stone toward the "Basic APM tooling" Future item already in scope, and a foundation for later analytics. Explicitly depends on the AWS backend from 2.0 already existing — a static/no-backend app can't write to a database directly from the browser without exposing database credentials to every visitor — so it's correctly placed in Future, not 2.0.
+
 ---
 
 ## Open Questions / Unresolved
