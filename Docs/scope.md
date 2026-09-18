@@ -19,6 +19,7 @@
 - Handling for more multi-album and other complex release scenarios (e.g. box sets with multiple albums, mixed formats, etc.)
 - Ability to keep a recent local history of retrieved releases (probably just locally in a browser cookie — no complex user account feature)
 - Use Lovable to prototype Discogs Search POC (spike to validate the search -> select release -> duration interaction before committing it to scope; not a code merge into this app)
+- Improve release ID input handling (close the bare-numeric-ID ambiguity where a number can validly match both an unrelated release and an unrelated master, since the two are separate, non-overlapping ID sequences — e.g. by requiring a full URL or an explicit r-prefix, rather than accepting a totally bare number)
 
 ## Future
 - Add rudimentary Discogs search support as a user option, for when the user doesn't already know the release ID (Search is complex; not looking to rebuild Discogs' own search UI, but a good use case for chaining multiple API calls in sequence)
