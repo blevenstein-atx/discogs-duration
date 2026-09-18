@@ -9,6 +9,7 @@ Summing track times in your head, or using a calculator or spreadsheet is onerou
 # Assumptions
 Users will have a known discogs release URL or release ID to enter. This assumes the user has already browsed the release on the discogs site.
 Not every discogs release has complete track time data.
+The Discogs response is fast enough that a loading/pending state is not nededed in the UI.
 
 # Use Cases
 Keeping these intentionally simple and lightweight, no UML or mermaid diagrams or structured use case templates.
@@ -74,9 +75,9 @@ Ability to enter a discogs release ID.
 
 A URL must be in a valid discogs URL format. Example: https://www.discogs.com/release/547049-Gorillaz-Demon-Days, or www.discogs.com/release/547049-Gorillaz-Demon-Days.
 Check URL validity prior to API request. Invalid URLs include: not a URL, empty string, whitespace/newline-padded paste. If the URL is invalid, display a message: Please enter a valid Discogs release URL or release ID.
-An ID must be in a valid discogs release ID format. Invalid formats include zero, negative, decimal, leading zeros. A valid input can be the standard integer number like 547049, or include a leading r, such as r547049 or [r547049]. The r and brackets can be stripped when sending the API request. If the ID is invalid, display a message: Please enter a valid Discogs release URL or release ID.
-OPEN QUESTION: What is the format for a valid discogs release number?
-Disallow use of non-release discogs records. Wrong Discogs URL type: a /master/ URL instead of /release/ (easy mistake — masters and releases are different endpoints with different data), or a /artist/, /label/, or search-results URL. This can be identified at time of input, such as "master" in the URL, like https://www.discogs.com/master/58002-Gorillaz-Demon-Days. Or by a leading m in ID, such as [m58002] or m58002. In the case of a user entering just a numeric ID, it will not be possible to detect a master release until the API response is received.
+An ID must be in a valid discogs release ID format. Invalid formats include zero, negative, decimal, leading zeros. A valid input can be the standard integer number like 547049, or include a leading r, such as r547049 or [r547049]. The r and brackets can be stripped when sending the API request. If the ID input is invalid, display a message: Please enter a valid Discogs release URL or release ID.
+In the case of ID prefixing, R547049 (uppercase) or [ r547049 ] (inner whitespace) are invalid.
+Disallow use of non-release discogs records. Wrong Discogs URL type: a /master/ URL instead of /release/, or a /artist/, /label/, or search-results URL. This can be identified at time of input, such as "master" in the URL, like https://www.discogs.com/master/58002-Gorillaz-Demon-Days. Or if a user includes a leading m in the ID, such as [m58002] or m58002.
 If a non-release URL or master release ID with leading m is entered, prior to API request display a message: Only individual releases are supported. Please use a specific release URL or ID.
 
 # Input UI
@@ -88,6 +89,7 @@ Beneath the app name and above the input field place instructions: Enter a disco
 A single input field for entering either a release URL or release ID. Field label: Release URL or ID
 Make the input field long enough to limit truncation of an entered URL.
 A button to submit the API request. The button should be grey/disabled until something is entered into the input field. Button label: Calculate Duration
+The Calculate Duration button should be disabled after clicking, while the API response is in progress, to prevent double-submit. (the Discogs response is expected to be fast, so displaying a loading/pending state is not necessary.)
 Input validation occurs when the button is clicked, either returning a validation error described above, or triggering the API request. Don't erase the user input, allow them to edit it and try again.
 
 # Results UI
@@ -97,26 +99,28 @@ In all success and error cases, the input URL or ID should remain in the input f
 The results should have two sections: Release metadata, and the duration calculation
 Release metadata to include: Discogs release ID, Artist, Title, Label, Format, Country, Released date
 For release with multiple formats, display all the contained formats. For example: https://www.discogs.com/release/25863751-New-Order-Low-Life
+In the case of releases with multple format values, present this as a single line with comma-joined values.
+In the case of multi-artist releases (i.e. compilations), display the multiple artists as comma-joined.
+Include a Clear results button. This button clears the input field and the results, so the user can enter new input and try again. The user also has the option to manually replace the input value and click Calculate Duration, which replaces the current results with new results. The Clear Results button should be disbaled when no results are displayed.
 
 ## Duration Calculation Section
 
 ### Success cases
 
-Format this section in a way that's easy to copy to the clipboard for pasting elsewhere as plain text.
-Display the release's total duration as: Grand Total Duration: hh:mm:ss
+Format this section in a way that's easy to copy to the clipboard for pasting elsewhere as plain text. For MVP this can be cleanly selectable text for manually copy, no Copy button needed.
+Display the release's total duration as: Grand Total Duration: hh:mm:ss. Do not use zero-padding for releases under an hour. For example, 45 minutes and 32 seconds is formatted as 45:32.
 In the case of a formats with multiple sides (vinyl LPs, cassettes) indicated for example as A, B, or AA, include sub-total durations for the sides as: Side Duration: hh:mm:ss
 In the case of multiple discs, multiple LPs, multiple tapes, indicated numerically like 1-1 or 2-1, include sub-total durations for each item as: Item Duration: hh:mm:ss
 In the case of releases with multiple mixed formats, such as box sets with vinyl and CDs, treat these the same as multi-item releases. Include item Duration totals for each item.
-In the case of multi-disc sets, such as box sets, include the title for each item in the set above its sub-total track time. These titles can be found in headers within the track list. For example: https://www.discogs.com/release/25863751-New-Order-Low-Life has headers of Low-life, Extras, Live In Tokyo 1985, and more.
-In the case of multi-disc sets, such as box sets with multiple format items, where an entire item is missing track times but other contained items have complete track times, calculate the durations of items where possible, include the Grand Total Duration, and include a message: One or more items in this multi-item set has no track time data. The Grand Total Duration has been calculated with available data.
-In the case of releases with a multi-track medley/suite, these will appear in the track list with a medley/suite section header and indented track, such as: https://www.discogs.com/release/4000806-Genesis-The-Lamb-Lies-Down-On-Broadway. The section header may have a duration, while the contained tracks do not. If the contained tracks have times, ignore the header and simply treat these as regular tracks in the total duration. If the contained tracks have no individual times, use the time in the medley/suite header.
-In the case of release with section headers not related to a medley/suite, such as section names or Bonus Tracks, ignore the headers. For example: https://www.discogs.com/release/1141075-Kate-Bush-Hounds-Of-Love
-
+In the case of multi-disc sets, such as box sets, and releases with a suite/medley, include the title for each item with a header above its sub-total track time. These titles can be found in headers within the track list. For example: https://www.discogs.com/release/25863751-New-Order-Low-Life has headers of Low-life, Extras, Live In Tokyo 1985, and more.
+In the case of releases with a multi-track medley/suite, these will appear in the track list with a medley/suite section header and indented track, such as: https://www.discogs.com/release/4000806-Genesis-The-Lamb-Lies-Down-On-Broadway. The medley/suite section header may have a duration, while the contained tracks do not. If the contained tracks do have times, use those times. If the contained tracks have no individual times, use the time in the medley/suite header.
+If the user requests an ID that returns a master release, include a link to the master release page and a message with the result: This is a Discogs master record, not an individual release. For accurate duration select a specific release and try again. 
 
 ### Failure cases
 
 In the case of track times of 0:00 or malformed duration strings such as 3:75 (seconds >59), do not calculate duration. Display a message: Duration cannot be calculated due to track time data errors.
-In the case of no track times or missing track times for one or more tracks in a single or multi-disc standard release (double LP or CD, for example), do not calculate duration. Display a message: Duration cannot be calculated due to missing track time data.
+In the case of no track times for all tracks in a release, or missing track times for one or more tracks in a single or multi-disc standard release (double LP or CD, for example), do not calculate duration. Display a message: Duration cannot be calculated due to missing track time data.
+In the case of missing track times for one or more tracks in any item wihtin a box set release do not calculate duration. Display a message: Duration cannot be calculated due to missing track time data.
 If the release is found, but has no track list, display a message: Release has no track data.
 If the release is not found, this will return a 400 series error (404) with a message such as "The value "258624535643576" is not a valid Discogs identifier." In this case, display the returned discogs message to the user.
 If the release has been merged or removed, this will return a 400 series error (410). In this case display a message: This release has been merged or removed.
