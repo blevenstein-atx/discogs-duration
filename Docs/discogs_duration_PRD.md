@@ -9,7 +9,7 @@ Summing track times in your head, or using a calculator or spreadsheet is onerou
 # Assumptions
 Users will have a known discogs release URL or release ID to enter. This assumes the user has already browsed the release on the discogs site.
 Not every discogs release has complete track time data.
-The Discogs response is fast enough that a loading/pending state is not nededed in the UI.
+The Discogs response is fast enough that a loading/pending state is not needed in the UI.
 
 # Use Cases
 Keeping these intentionally simple and lightweight, no UML or mermaid diagrams or structured use case templates.
@@ -99,9 +99,9 @@ In all success and error cases, the input URL or ID should remain in the input f
 The results should have two sections: Release metadata, and the duration calculation
 Release metadata to include: Discogs release ID, Artist, Title, Label, Format, Country, Released date
 For release with multiple formats, display all the contained formats. For example: https://www.discogs.com/release/25863751-New-Order-Low-Life
-In the case of releases with multple format values, present this as a single line with comma-joined values.
+In the case of releases with multiple format values, present this as a single line with comma-joined values.
 In the case of multi-artist releases (i.e. compilations), display the multiple artists as comma-joined.
-Include a Clear results button. This button clears the input field and the results, so the user can enter new input and try again. The user also has the option to manually replace the input value and click Calculate Duration, which replaces the current results with new results. The Clear Results button should be disbaled when no results are displayed.
+Include a Clear results button. This button clears the input field and the results, so the user can enter new input and try again. The user also has the option to manually replace the input value and click Calculate Duration, which replaces the current results with new results. The Clear Results button should be disabled when no results are displayed.
 
 ## Duration Calculation Section
 
@@ -114,13 +114,13 @@ In the case of multiple discs, multiple LPs, multiple tapes, indicated numerical
 In the case of releases with multiple mixed formats, such as box sets with vinyl and CDs, treat these the same as multi-item releases. Include item Duration totals for each item.
 In the case of multi-disc sets, such as box sets, and releases with a suite/medley, include the title for each item with a header above its sub-total track time. These titles can be found in headers within the track list. For example: https://www.discogs.com/release/25863751-New-Order-Low-Life has headers of Low-life, Extras, Live In Tokyo 1985, and more.
 In the case of releases with a multi-track medley/suite, these will appear in the track list with a medley/suite section header and indented track, such as: https://www.discogs.com/release/4000806-Genesis-The-Lamb-Lies-Down-On-Broadway. The medley/suite section header may have a duration, while the contained tracks do not. If the contained tracks do have times, use those times. If the contained tracks have no individual times, use the time in the medley/suite header.
-If the user requests an ID that returns a master release, include a link to the master release page and a message with the result: This is a Discogs master record, not an individual release. For accurate duration select a specific release and try again. 
+
 
 ### Failure cases
 
 In the case of track times of 0:00 or malformed duration strings such as 3:75 (seconds >59), do not calculate duration. Display a message: Duration cannot be calculated due to track time data errors.
 In the case of no track times for all tracks in a release, or missing track times for one or more tracks in a single or multi-disc standard release (double LP or CD, for example), do not calculate duration. Display a message: Duration cannot be calculated due to missing track time data.
-In the case of missing track times for one or more tracks in any item wihtin a box set release do not calculate duration. Display a message: Duration cannot be calculated due to missing track time data.
+In the case of missing track times for one or more tracks in any item within a box set release do not calculate duration. Display a message: Duration cannot be calculated due to missing track time data.
 If the release is found, but has no track list, display a message: Release has no track data.
 If the release is not found, this will return a 400 series error (404) with a message such as "The value "258624535643576" is not a valid Discogs identifier." In this case, display the returned discogs message to the user.
 If the release has been merged or removed, this will return a 400 series error (410). In this case display a message: This release has been merged or removed.
