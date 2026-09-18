@@ -11,6 +11,14 @@ Users will have a known discogs release URL or release ID to enter. This assumes
 Not every discogs release has complete track time data.
 The Discogs response is fast enough that a loading/pending state is not needed in the UI.
 
+# Risks
+
+The app authenticates to the Discogs API using a personal access token, which grants full account-level access for the token holder (collection, wantlist, marketplace orders, private inventory) — not just a rate-limit allowance. In a static site with no backend, this token is necessarily sent from the browser and is visible to anyone who inspects the deployed site's network traffic; this cannot be avoided within a no-backend architecture, regardless of what is or isn't committed to the repo.
+
+This risk has been accepted for the MVP. It is acceptable specifically because this app will not be shared publicly — only with Bruce and a personal circle of friends. This decision would need to be revisited if the app's audience ever grows beyond that.
+
+Mitigation: the token is not committed to the git repository. It is stored as a GitHub Actions repository secret and injected into a generated `config.js` file as a build step during deployment, rather than living in a local gitignored file that would never actually reach the deployed site. This does not prevent the runtime exposure above (the accepted risk), but it does prevent a second, larger exposure: a token committed into a public repo's history is discoverable by automated secret-scanning at scale, while runtime-only exposure requires someone to visit the site and inspect it directly. Rotation, if ever needed: generate a new token from Discogs (which replaces the current one), update the GitHub Actions secret, and redeploy — no code changes required.
+
 # Use Cases
 Keeping these intentionally simple and lightweight, no UML or mermaid diagrams or structured use case templates.
 
