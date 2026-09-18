@@ -29,3 +29,4 @@
 - Basic APM tooling — not needed for a personal project, but a good opportunity to learn how it's set up
 - Basic API request/response logging (e.g. to Postgres), as a first step toward the APM item above and a foundation for later reports/analytics on usage. Depends on the AWS backend from 2.0 already existing — a static/no-backend app can't write to a database directly from the browser without exposing database credentials to every visitor
 - Reports and analytics built on top of the API logging above, once there's real logged data to work with
+- Add a "Copy to Clipboard" button for the duration results (browser Clipboard API), replacing the MVP's plain-selectable-text approach

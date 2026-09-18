@@ -103,16 +103,27 @@ A running record of questions, decisions, and reasoning behind this project's to
 **Decision:** Not for MVP. Added to Future scope instead: basic API request/response logging (e.g. to Postgres), plus reports/analytics built on top of that logging once it exists.<br>
 **Reasoning:** Full NFR treatment isn't warranted for a personal project's MVP, but logging is a reasonable, well-scoped stepping stone toward the "Basic APM tooling" Future item already in scope, and a foundation for later analytics. Explicitly depends on the AWS backend from 2.0 already existing — a static/no-backend app can't write to a database directly from the browser without exposing database credentials to every visitor — so it's correctly placed in Future, not 2.0.
 
+### 2026-09-18 — Requirements<br>
+**Question:** Is the `[m<id>]` bracket notation (parallel to `[r<id>]` for releases) an actual real-world Discogs convention, or an assumed-by-symmetry rule that should be dropped from input validation?<br>
+**Decision:** Confirmed real. Bruce found it directly in Discogs' own UI — the release/master page header shows `[r...]`/`[m...]` with a click-to-copy affordance — so a user could plausibly copy this straight off the site and paste it into the app. Validation logic for both stays as specified.<br>
+**Reasoning:** Resolves the open question raised in the 2026-09-17 review with a primary-source screenshot rather than a guess.
+
+### 2026-09-18 — Requirements<br>
+**Question:** PRD v2 addressed the prior review's findings — full re-review before continuing toward a build.<br>
+**Decision:** Nearly all prior findings resolved cleanly: loading state, Clear button, copy-to-clipboard (see below), artist/format comma-joining, ID prefix case/whitespace strictness, `hh:mm:ss` padding, the multi-item partial-data granularity question (simplified to one strict all-or-nothing rule), and the heading-disambiguation conflict (resolved by removing the "ignore some headers" carve-out — every heading now gets its own sub-total). One new issue found: see the refined Open Question below about the new master-release success-case rule.<br>
+**Reasoning:** Matches the standing practice of reviewing requirements as a distinct step before building.
+
+### 2026-09-18 — Requirements / Scope<br>
+**Question:** Should the results section have a literal Copy-to-clipboard button for MVP?<br>
+**Decision:** No — MVP stays with clean, manually-selectable text. A literal Copy button (Clipboard API) added to Future scope instead.<br>
+**Reasoning:** Keeps MVP simple; the Clipboard API is a small, well-scoped enhancement that doesn't need to block MVP delivery.
+
 ---
 
 ## Open Questions / Unresolved
 
 Items raised during reviews that don't have a decision yet. Once resolved, move the entry up into the dated log above.
 
-- **Box-set/multi-item header disambiguation:** the PRD uses tracklist section headers both as item/disc titles to sub-total under (e.g. "Live In Tokyo 1985") *and* as things to ignore (e.g. "Bonus Tracks") — but both are the identical data shape (`type_: "heading"`) in Discogs' API. No rule yet distinguishes them. *(Raised 2026-09-17)*
-- **Partial-data granularity:** does one item (not all) in a multi-item box set having *some* but not *all* track times missing block just that item's subtotal, or the whole Grand Total? *(Raised 2026-09-17)*
-- **Master-ID shorthand notation:** is `m<id>` / `[m<id>]` an actual real-world Discogs convention, the way `r<id>` is used for releases, or an assumed-by-symmetry convention that should be dropped? *(Raised 2026-09-17)*
-- **UI details not yet specified:** loading/pending state during the API call, disabling the button during an in-flight request, an explicit "Clear" action vs. just re-typing and resubmitting, and whether "copy to clipboard" means a literal button or just copy-friendly text formatting. *(Raised 2026-09-17)*
-- **Minor formatting decisions:** zero-padded `hh:mm:ss` vs. dropping the hours segment under an hour; how multiple credited artists / "Various" compilations should display; case/whitespace tolerance for `r`/`m` ID prefixes. *(Raised 2026-09-17)*
+- **Master-release success case can't fire as written:** the PRD says "if the user requests an ID that returns a master release, include a link to the master page..." but Discogs' `/releases/{id}` endpoint has no way to signal that a number belongs to the master namespace — confirmed against a real report on Discogs' own forum, where a user querying the release endpoint with a master's ID number got back an actual, unrelated release with no error at all (release IDs and master IDs are separate, non-overlapping sequences). As written, this rule can only fire for inputs already blocked pre-call (a `/master/` URL, or `m`/`[m...]` prefix) — the actual gap (a bare number the user means as a master ID) still isn't detectable. Decide: remove the line, or keep the existing metadata display (Artist/Title/Format always shown) as the stated, accepted mitigation instead of implying the app catches it. *(Raised 2026-09-18)*
 - **User-Agent feasibility risk:** browser JS cannot set a custom User-Agent header (forbidden header) — Discogs asks API clients to self-identify. Confirmed via Postman (2026-09-18) that Discogs accepts the token with User-Agent `DiscogsDurationApp` when explicitly set — but Postman isn't a browser and can set any header it wants, so this only confirms the *value* is acceptable, not the actual risk. Still untested: whether Discogs accepts a request from real browser JS, which can't override the header at all and will silently send the browser's own default User-Agent instead. This is foundational to whether the no-backend MVP architecture works as scoped; worth testing directly from a browser (e.g. a `fetch()` call in dev tools console) rather than discovering it mid-build. *(Open since early project setup; reiterated 2026-09-17; partially tested 2026-09-18)*
 - **Token secrecy tradeoff:** a personal Discogs token cannot actually be kept secret in a pure static/no-backend architecture — it ships to the browser and is readable by anyone inspecting the deployed site's network traffic, regardless of what's gitignored in the repo. Treated informally as an acceptable tradeoff for a personal token against public/read-only data, but not yet explicitly signed off as a final decision. *(Open since early project setup; reiterated 2026-09-17)*
