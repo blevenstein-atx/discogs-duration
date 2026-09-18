@@ -133,7 +133,7 @@ A running record of questions, decisions, and reasoning behind this project's to
 ### 2026-09-18 — Architecture<br>
 **Question:** Does Discogs accept an API request from real browser JS, which can't set a custom User-Agent at all and silently sends the browser's own default instead — the foundational risk to the whole no-backend MVP architecture?<br>
 **Decision:** Confirmed yes. Tested directly with a `fetch()` call from a real webpage's dev tools console (not an internal Chrome page, which has its own restrictive CSP and gave a false alarm on the first attempt) — got back a `200`.<br>
-**Reasoning:** This was the single biggest open architectural risk in the project — if Discogs had rejected or throttled requests without a custom User-Agent, the static/no-backend MVP approach wouldn't have worked at all. Now tested and confirmed rather than assumed.
+**Reasoning:** This was the single biggest open architectural risk in the project — if Discogs had rejected or throttled requests without a custom User-Agent, the static/no-backend MVP approach wouldn't have worked at all. Now tested and confirmed rather than assumed. Note: tested in Chrome; Bruce's actual daily/target browser is Safari, not yet independently tested. Expected to behave the same, since the forbidden-header behavior is part of the standard Fetch spec implemented identically across browsers, not a Chrome-specific quirk — but worth a quick confirmation in Safari's Web Inspector console too, since that's the browser that actually matters for real usage.
 
 ---
 
