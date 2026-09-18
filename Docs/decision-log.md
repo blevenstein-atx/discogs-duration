@@ -125,6 +125,11 @@ A running record of questions, decisions, and reasoning behind this project's to
 **Decision:** Removed the rule from the PRD. Confirmed infeasible with a direct test: querying `/releases/87442` (the numeric ID from Stevie Wonder's *Hotter Than July* master URL) returned a completely unrelated real release ("House Of Jazz — The Soul Package") with a `200 OK` and no error or warning of any kind. The `master_id`/`master_url` fields present in that response are ordinary per-release metadata (which master group *that* release belongs to) and have no connection to the queried number — there is no field anywhere in the response that flags "this number is also used elsewhere as a master ID." The existing Release metadata display (Artist/Title/Format always shown) remains the only, informal mitigation — a user can notice the returned album is wrong.<br>
 **Reasoning:** Confirms the 2026-09-17 forum-based finding with a direct, reproducible test against the real API, removing any doubt.
 
+### 2026-09-18 — Requirements / Scope<br>
+**Question:** The bare-numeric master/release ID collision is confirmed real and not rare (both ID sequences are dense and long-running) — worth fixing rather than leaving as an accepted MVP risk indefinitely?<br>
+**Decision:** Added "Improve release ID input handling" to v2 scope, rather than changing MVP scope now. Two candidate approaches noted for when it's tackled: require a full URL only (simpler, but narrows the current "URL or release ID" MVP scope statement), or keep bare release-ID input but require the `r` prefix and drop support for a totally unprefixed number (keeps more of the current scope, since `r`/`m`-prefixed and full-URL input are already unambiguous — only a bare, unprefixed integer has zero type context).<br>
+**Reasoning:** Not critical enough to block or change MVP, but real enough (confirmed via direct test, not rare) to fix deliberately in v2 rather than carry indefinitely as an informal, undocumented risk.
+
 ---
 
 ## Open Questions / Unresolved
