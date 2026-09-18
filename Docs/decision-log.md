@@ -130,10 +130,14 @@ A running record of questions, decisions, and reasoning behind this project's to
 **Decision:** Added "Improve release ID input handling" to v2 scope, rather than changing MVP scope now. Two candidate approaches noted for when it's tackled: require a full URL only (simpler, but narrows the current "URL or release ID" MVP scope statement), or keep bare release-ID input but require the `r` prefix and drop support for a totally unprefixed number (keeps more of the current scope, since `r`/`m`-prefixed and full-URL input are already unambiguous — only a bare, unprefixed integer has zero type context).<br>
 **Reasoning:** Not critical enough to block or change MVP, but real enough (confirmed via direct test, not rare) to fix deliberately in v2 rather than carry indefinitely as an informal, undocumented risk.
 
+### 2026-09-18 — Architecture<br>
+**Question:** Does Discogs accept an API request from real browser JS, which can't set a custom User-Agent at all and silently sends the browser's own default instead — the foundational risk to the whole no-backend MVP architecture?<br>
+**Decision:** Confirmed yes. Tested directly with a `fetch()` call from a real webpage's dev tools console (not an internal Chrome page, which has its own restrictive CSP and gave a false alarm on the first attempt) — got back a `200`.<br>
+**Reasoning:** This was the single biggest open architectural risk in the project — if Discogs had rejected or throttled requests without a custom User-Agent, the static/no-backend MVP approach wouldn't have worked at all. Now tested and confirmed rather than assumed.
+
 ---
 
 ## Open Questions / Unresolved
 
 Items raised during reviews that don't have a decision yet. Once resolved, move the entry up into the dated log above.
-- **User-Agent feasibility risk:** browser JS cannot set a custom User-Agent header (forbidden header) — Discogs asks API clients to self-identify. Confirmed via Postman (2026-09-18) that Discogs accepts the token with User-Agent `DiscogsDurationApp` when explicitly set — but Postman isn't a browser and can set any header it wants, so this only confirms the *value* is acceptable, not the actual risk. Still untested: whether Discogs accepts a request from real browser JS, which can't override the header at all and will silently send the browser's own default User-Agent instead. This is foundational to whether the no-backend MVP architecture works as scoped; worth testing directly from a browser (e.g. a `fetch()` call in dev tools console) rather than discovering it mid-build. *(Open since early project setup; reiterated 2026-09-17; partially tested 2026-09-18)*
 - **Token secrecy tradeoff:** a personal Discogs token cannot actually be kept secret in a pure static/no-backend architecture — it ships to the browser and is readable by anyone inspecting the deployed site's network traffic, regardless of what's gitignored in the repo. Treated informally as an acceptable tradeoff for a personal token against public/read-only data, but not yet explicitly signed off as a final decision. *(Open since early project setup; reiterated 2026-09-17)*
