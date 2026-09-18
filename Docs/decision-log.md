@@ -137,7 +137,20 @@ A running record of questions, decisions, and reasoning behind this project's to
 
 ---
 
+### 2026-09-18 — Architecture<br>
+**Question:** Is the token-secrecy tradeoff (it will be visible to anyone inspecting the deployed site's network traffic) acceptable, now that its actual scope is understood correctly?<br>
+**Decision:** Accepted, with the scope correctly understood: a personal access token grants full account-level access for the token holder (collection, wantlist, marketplace orders, private inventory) — not just a rate-limit nuisance, as initially assumed. Confirmed against Discogs' own authentication docs, which distinguish key+secret (no user identity, no account access) from either token type (account access for the token holder). Acceptable specifically because this app won't be shared beyond Bruce and a personal circle of friends — not a decision that would hold for a publicly shared app.<br>
+**Reasoning:** The risk didn't change; the understanding of it did. Worth recording the corrected scope so this isn't re-accepted later under the original, inaccurate "worst case is rate limit" premise if the app's audience ever grows.
+
+### 2026-09-18 — Architecture<br>
+**Question:** How should the token actually be held and rotated, given `config.js` is gitignored but GitHub Pages only serves what's committed to the repo — so a gitignored file never reaches the deployed site at all?<br>
+**Decision:** Store the token as a GitHub Actions repository secret rather than a local gitignored file, and have the existing deploy workflow (`static.yml`) generate `config.js` from that secret as a build step before publishing to Pages. Rotation: generate a new token on Discogs (replaces the old one), update the Actions secret, redeploy — no code changes, nothing to find in git.<br>
+**Reasoning:** Matches standard practice for a static site needing one secret at deploy time, and matches Bruce's own professional guidance to customers — credentials as a parameter stored outside the code, for easy rotation — applied to this project's own architecture. Also meaningfully reduces exposure versus committing the token directly: a secret sitting in a public repo's history gets found by automated secret-scanning at scale, while runtime-only exposure requires someone to actually visit the site and inspect traffic. To be implemented alongside actual app building, since no code exists yet to consume `config.js`.
+
+---
+
 ## Open Questions / Unresolved
 
 Items raised during reviews that don't have a decision yet. Once resolved, move the entry up into the dated log above.
-- **Token secrecy tradeoff:** a personal Discogs token cannot actually be kept secret in a pure static/no-backend architecture — it ships to the browser and is readable by anyone inspecting the deployed site's network traffic, regardless of what's gitignored in the repo. Treated informally as an acceptable tradeoff for a personal token against public/read-only data, but not yet explicitly signed off as a final decision. *(Open since early project setup; reiterated 2026-09-17)*
+
+*(none currently open)*
