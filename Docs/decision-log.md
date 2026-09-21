@@ -157,6 +157,11 @@ A running record of questions, decisions, and reasoning behind this project's to
 **Decision:** Added short traceability IDs to every testable requirement in the PRD: `UC-1`–`UC-5` for the five Use Cases, `IN-1`–`IN-2` (Input), `IV-1`–`IV-6` (Input Validation), `UI-1`–`UI-8` (Input UI), `RU-1`–`RU-8` (Results UI), `DC-1`–`DC-7` (Duration Calculation success cases), `DF-1`–`DF-6` (Duration Calculation failure cases), and `AF-1` (API/Network failures). Problems, Assumptions, and Risks are context, not testable requirements, and were left without IDs.<br>
 **Reasoning:** The PRD's requirements were written as plain prose paragraphs with no stable identifier, so a test-data document would have had nothing to point at except re-describing each case. Bruce plans to build a companion test-data document (one URL per ID) once this exists.
 
+### 2026-09-21 — Requirements / Scope<br>
+**Question:** Once a test-data doc exists (one URL per requirement ID), how will it actually get used — will Claude automatically build the app, run every case, and produce a report?<br>
+**Decision:** For MVP, testing stays manual: Claude walks through the test-data doc case by case using browser automation against the running app and reports what actually happened per requirement ID, on request. No test framework or automated regression suite for MVP. Added a v2 scope item to introduce automated test execution (e.g. Playwright) that re-runs the full test-data set and reports pass/fail per ID.<br>
+**Reasoning:** No automated testing was ever scoped into the MVP PRD, and adding a test framework now would be scope creep inconsistent with keeping the MVP small. A manual, on-request walkthrough is sufficient for a personal project at this size and doesn't require new tooling. Automated regression testing is genuinely useful once the app exists and changes over time, which fits naturally into v2 rather than MVP.
+
 ---
 
 ## Open Questions / Unresolved
