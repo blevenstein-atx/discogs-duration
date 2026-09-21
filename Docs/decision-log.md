@@ -152,6 +152,11 @@ A running record of questions, decisions, and reasoning behind this project's to
 **Decision:** Not yet — stick with the original plan (Bruce prompts Figma AI directly, for his own hands-on reps) for the MVP UI concepts now. Revisit having Claude drive Figma directly via the MCP plugin as a v2 exercise.<br>
 **Reasoning:** The two options tell different interview stories: Bruce driving Figma AI himself demonstrates his own hands-on exposure to an AI design tool, which is the reason this exercise was scoped into the project in the first place (2026-09-16). Claude driving Figma directly is a different, also-legitimate story — an AI coding collaborator connected to a design tool via MCP — but replacing the original plan now would mean losing the hands-on reps Bruce specifically wanted. Deferred rather than dropped, since it's a real option worth trying once the project reaches v2.
 
+### 2026-09-21 — Requirements<br>
+**Question:** Bruce wants to compile a test-data set (one Discogs URL per case in the PRD) and link each URL to the specific requirement it covers — how should requirements be identified for that mapping?<br>
+**Decision:** Added short traceability IDs to every testable requirement in the PRD: `UC-1`–`UC-5` for the five Use Cases, `IN-1`–`IN-2` (Input), `IV-1`–`IV-6` (Input Validation), `UI-1`–`UI-8` (Input UI), `RU-1`–`RU-8` (Results UI), `DC-1`–`DC-7` (Duration Calculation success cases), `DF-1`–`DF-6` (Duration Calculation failure cases), and `AF-1` (API/Network failures). Problems, Assumptions, and Risks are context, not testable requirements, and were left without IDs.<br>
+**Reasoning:** The PRD's requirements were written as plain prose paragraphs with no stable identifier, so a test-data document would have had nothing to point at except re-describing each case. Bruce plans to build a companion test-data document (one URL per ID) once this exists.
+
 ---
 
 ## Open Questions / Unresolved
