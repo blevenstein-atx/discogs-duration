@@ -147,6 +147,11 @@ A running record of questions, decisions, and reasoning behind this project's to
 **Decision:** Store the token as a GitHub Actions repository secret rather than a local gitignored file, and have the existing deploy workflow (`static.yml`) generate `config.js` from that secret as a build step before publishing to Pages. Rotation: generate a new token on Discogs (replaces the old one), update the Actions secret, redeploy — no code changes, nothing to find in git.<br>
 **Reasoning:** Matches standard practice for a static site needing one secret at deploy time, and matches Bruce's own professional guidance to customers — credentials as a parameter stored outside the code, for easy rotation — applied to this project's own architecture. Also meaningfully reduces exposure versus committing the token directly: a secret sitting in a public repo's history gets found by automated secret-scanning at scale, while runtime-only exposure requires someone to actually visit the site and inspect traffic. To be implemented alongside actual app building, since no code exists yet to consume `config.js`.
 
+### 2026-09-21 — Tooling / Process<br>
+**Question:** Now that a Figma MCP plugin is connected directly in this Claude session, should Claude drive Figma itself to generate the UI concepts, replacing the plan to have Bruce prompt Figma AI himself?<br>
+**Decision:** Not yet — stick with the original plan (Bruce prompts Figma AI directly, for his own hands-on reps) for the MVP UI concepts now. Revisit having Claude drive Figma directly via the MCP plugin as a v2 exercise.<br>
+**Reasoning:** The two options tell different interview stories: Bruce driving Figma AI himself demonstrates his own hands-on exposure to an AI design tool, which is the reason this exercise was scoped into the project in the first place (2026-09-16). Claude driving Figma directly is a different, also-legitimate story — an AI coding collaborator connected to a design tool via MCP — but replacing the original plan now would mean losing the hands-on reps Bruce specifically wanted. Deferred rather than dropped, since it's a real option worth trying once the project reaches v2.
+
 ---
 
 ## Open Questions / Unresolved
