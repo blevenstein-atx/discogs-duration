@@ -1,6 +1,6 @@
 Discogs Duration Project Test Data
 
-The IDs map to the requirememnts IDs in the PRD.
+The IDs map to the requirements IDs in the PRD.
 
 # Input Validation
 
@@ -62,7 +62,7 @@ Expected Result: Display a message: Please enter a valid Discogs release URL or 
 Input: (r58002)
 
 
-Expected Result: Display a message: Please use a specific release URL or ID.
+Expected Result: Display a message: Please enter a valid Discogs release URL or release ID.
 
 **IV-4**
 
@@ -159,7 +159,7 @@ Example discogs URL: https://www.discogs.com/master/192783-Kate-Bush-This-Womans
 Example discogs URL: https://www.discogs.com/release/4000806-Genesis-The-Lamb-Lies-Down-On-Broadway
 
 
-# Duration Calculation, Success Cases
+# Duration Calculation, Failure Cases
 
 **DF-1**
 
@@ -170,7 +170,6 @@ To be tested with mocked/synthetic API response data.
 
 
 Example discogs URL: https://www.discogs.com/release/191013-New-Order-Peel-Sessions
-Example discogs URL: https://www.discogs.com/release/16000948-New-Order-Power-Corruption-And-Lies
 
 **DF-3**
 
