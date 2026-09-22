@@ -167,6 +167,11 @@ A running record of questions, decisions, and reasoning behind this project's to
 **Decision:** No known real-world example was found, and none is expected to reliably exist or persist. DF-1 will be tested with hand-crafted synthetic/mocked API response data once app code exists, rather than a live Discogs URL like every other case in the test-data set.<br>
 **Reasoning:** Discogs' track-time field is almost certainly format-validated at entry, so a malformed string like `5:76` likely can't be saved through the normal editing UI at all. `0:00` is more plausible as a literal placeholder entry, but no confirmed example was found either. More fundamentally, Discogs is actively curated by a community that treats data-quality issues (like incorrect durations) as something to fix — the "Complete & Correct" status editors care about — so even a real example found today could be corrected before the test-data doc is used against it. Mocked data tests this case deterministically instead of depending on a fragile, editable, third-party data point.
 
+### 2026-09-22 — Requirements<br>
+**Question:** UI-1 originally said the app should try to copy Discogs' own site styling for MVP, possibly deferred to v2/React if not achievable. Now that real Figma AI concept mockups exist and look good, should MVP still target literal Discogs-style visual matching?<br>
+**Decision:** No — MVP targets the Figma AI mockups already in `Docs/figma-concepts/` as the actual visual spec, not Discogs' own site styling. Updated `UI-1` in the PRD accordingly. Also noted: in v2, React with Material UI components may let the app look more polished than Discogs' own site, not just match it — a stretch goal, not a requirement.<br>
+**Reasoning:** The Figma mockups are a better, already-validated visual target than an open-ended "try to copy Discogs" instruction — concrete and already reviewed, versus vague and open to endless polishing against a moving target (Discogs' own site). Matches the earlier UI-1 note that hand-matching another site's exact styling in plain CSS is more time investment than framework work is worth for MVP.
+
 ---
 
 ## Open Questions / Unresolved
