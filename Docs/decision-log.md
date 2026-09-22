@@ -162,6 +162,11 @@ A running record of questions, decisions, and reasoning behind this project's to
 **Decision:** For MVP, testing stays manual: Claude walks through the test-data doc case by case using browser automation against the running app and reports what actually happened per requirement ID, on request. No test framework or automated regression suite for MVP. Added a v2 scope item to introduce automated test execution (e.g. Playwright) that re-runs the full test-data set and reports pass/fail per ID.<br>
 **Reasoning:** No automated testing was ever scoped into the MVP PRD, and adding a test framework now would be scope creep inconsistent with keeping the MVP small. A manual, on-request walkthrough is sufficient for a personal project at this size and doesn't require new tooling. Automated regression testing is genuinely useful once the app exists and changes over time, which fits naturally into v2 rather than MVP.
 
+### 2026-09-22 — Requirements<br>
+**Question:** The test-data plan is one real Discogs URL per requirement ID — can DF-1 (malformed duration strings, e.g. seconds > 59 like `5:76`, or track times of `0:00`) actually be sourced from a real, live release?<br>
+**Decision:** No known real-world example was found, and none is expected to reliably exist or persist. DF-1 will be tested with hand-crafted synthetic/mocked API response data once app code exists, rather than a live Discogs URL like every other case in the test-data set.<br>
+**Reasoning:** Discogs' track-time field is almost certainly format-validated at entry, so a malformed string like `5:76` likely can't be saved through the normal editing UI at all. `0:00` is more plausible as a literal placeholder entry, but no confirmed example was found either. More fundamentally, Discogs is actively curated by a community that treats data-quality issues (like incorrect durations) as something to fix — the "Complete & Correct" status editors care about — so even a real example found today could be corrected before the test-data doc is used against it. Mocked data tests this case deterministically instead of depending on a fragile, editable, third-party data point.
+
 ---
 
 ## Open Questions / Unresolved
