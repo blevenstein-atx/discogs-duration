@@ -92,7 +92,7 @@ Keeping these intentionally simple and lightweight, no UML or mermaid diagrams o
 
 # Input UI
 
-**UI-1.** UI styling can be copied from the Discogs website. Let's try making the app look like a Discogs tool, if possible. (This may need to wait until v2 when we implement React)
+**UI-1.** For MVP, follow the UI concept produced via Figma AI (see `Docs/figma-concepts/`) rather than attempting to replicate the Discogs website's own styling exactly. In v2, using React with Material UI components may allow the app to look more polished than Discogs' own site, rather than just matching it.
 
 **UI-2.** At the top of the UI place the app name: Release Duration Calculator<br>
 **UI-3.** Beneath the app name and above the input field place instructions: Enter a discogs release URL or discogs release ID to calculate the release's total duration. Master release records are not supported, only specific child releases.<br>
