@@ -109,9 +109,10 @@
     return { total };
   }
 
-  // Resolves a type_:"heading" tracklist entry into a named group total, if it
-  // represents one (DC-6: box-set/disc-titled items; DC-7: medley/suite headers).
-  // Returns null if the heading is a bare section label with no sub_tracks.
+  // Resolves a type_:"heading" or type_:"index" tracklist entry into a named
+  // group total, if it represents one (DC-6: box-set/disc-titled items; DC-7:
+  // medley/suite headers — real API data uses type_:"index" for these).
+  // Returns null if the entry is a bare section label with no sub_tracks.
   function resolveHeadingGroup(entry) {
     const subTracks = entry.sub_tracks || [];
     if (subTracks.length === 0) {
@@ -145,13 +146,16 @@
     const flatTracks = [];
 
     for (const entry of tracklist) {
-      if (entry.type_ === "heading") {
+      if (entry.type_ === "heading" || entry.type_ === "index") {
+        // DC-7: real Discogs API data uses type_:"index" (not "heading") for
+        // medley/suite entries with sub_tracks, e.g. a multi-part track grouped
+        // under one listed duration. Route both through the same resolution path
+        // so these entries and their sub_tracks/own duration are never dropped.
         const resolved = resolveHeadingGroup(entry);
         if (resolved && resolved.error) return { ok: false, reason: resolved.error };
         if (resolved) headingGroups.push(resolved);
         continue;
       }
-      if (entry.type_ === "index") continue; // rare, not a real track
       flatTracks.push(entry);
     }
 
