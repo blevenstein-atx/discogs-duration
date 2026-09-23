@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 722" role="img" aria-label="Diagram showing the discogs-duration setup: local Mac tooling (Homebrew, Node.js, GitHub CLI, VS Code, Postman, Figma) pushes to a public GitHub repo containing app source, docs, and Postman specs, which triggers a GitHub Actions workflow that deploys to GitHub Pages; from there, a visitor's browser fetches release data directly from the Discogs API using a token injected at deploy time. The full pipeline is built, deployed, and confirmed working end to end.">
+  <style>
+    :root {
+      --bg: #FAF7F0;
+      --surface: #FFFFFF;
+      --surface-2: #F1EBDC;
+      --border: #E1D8C4;
+      --text: #211D15;
+      --text-dim: #6B6250;
+      --accent: #B9791F;
+      --accent-soft: rgba(185,121,31,0.12);
+      --accent-2: #3D7F79;
+      --accent-2-soft: rgba(61,127,121,0.12);
+    }
+    text { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    .serif { font-family: Georgia, "Times New Roman", serif; }
+    .sans { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  </style>
+  <rect x="0" y="0" width="640" height="722" fill="var(--bg)" />
+  <defs>
+    <marker id="arrowAccent" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)" />
+    </marker>
+  </defs>
+
+  <!-- Your Mac -->
+  <rect x="20" y="24" width="600" height="218" rx="14" fill="var(--surface-2)" stroke="var(--text-dim)" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="7 5" />
+  <text x="40" y="50" font-size="11" letter-spacing="1.2" fill="var(--text-dim)">YOUR MAC</text>
+  <text x="40" y="67" class="sans" font-size="12" fill="var(--text-dim)">local dev tooling — nothing here ships</text>
+
+  <rect x="40" y="80" width="176" height="26" rx="6" fill="var(--accent-soft)" stroke="var(--border)" />
+  <text x="128" y="97" text-anchor="middle" font-size="12" fill="var(--text)">Homebrew</text>
+
+  <rect x="232" y="80" width="176" height="26" rx="6" fill="var(--accent-soft)" stroke="var(--border)" />
+  <text x="320" y="97" text-anchor="middle" font-size="12" fill="var(--text)">Node.js</text>
+
+  <rect x="424" y="80" width="176" height="26" rx="6" fill="var(--accent-soft)" stroke="var(--border)" />
+  <text x="512" y="97" text-anchor="middle" font-size="12" fill="var(--text)">GitHub CLI (gh)</text>
+
+  <rect x="40" y="112" width="176" height="26" rx="6" fill="var(--accent-soft)" stroke="var(--border)" />
+  <text x="128" y="129" text-anchor="middle" font-size="12" fill="var(--text)">VS Code</text>
+
+  <rect x="232" y="112" width="176" height="26" rx="6" fill="var(--accent-soft)" stroke="var(--border)" />
+  <text x="320" y="129" text-anchor="middle" font-size="12" fill="var(--text)">Postman</text>
+
+  <rect x="424" y="112" width="176" height="26" rx="6" fill="var(--accent-soft)" stroke="var(--border)" />
+  <text x="512" y="129" text-anchor="middle" font-size="12" fill="var(--text)">Figma</text>
+
+  <rect x="40" y="146" width="560" height="84" rx="8" fill="var(--surface)" stroke="var(--border)" />
+  <text x="60" y="168" font-size="13" font-weight="500" fill="var(--text)">~/Projects/discogs-duration</text>
+  <text x="60" y="186" font-size="11" fill="var(--text-dim)">.git · .gitignore</text>
+  <text x="60" y="204" font-size="11" fill="var(--text-dim)">Docs/ (PRD, decision log, test data) · postman/ (spec + collections)</text>
+
+  <!-- Arrow: push -->
+  <line x1="320" y1="242" x2="320" y2="278" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrowAccent)" />
+  <text x="336" y="264" font-size="11" fill="var(--accent)">git push origin main</text>
+
+  <!-- GitHub repo -->
+  <rect x="90" y="280" width="460" height="72" rx="10" fill="var(--surface)" stroke="var(--border)" />
+  <text x="110" y="302" font-size="11" letter-spacing="1" fill="var(--text-dim)">GITHUB · PUBLIC REPOSITORY</text>
+  <text x="110" y="324" class="serif" font-size="16" font-weight="600" fill="var(--text)">discogs-duration</text>
+  <text x="110" y="342" font-size="11" fill="var(--text-dim)">.github/workflows/static.yml</text>
+
+  <!-- Arrow: trigger -->
+  <line x1="320" y1="352" x2="320" y2="384" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrowAccent)" />
+  <text x="336" y="372" font-size="11" fill="var(--accent)">push triggers workflow</text>
+
+  <!-- Actions -->
+  <rect x="90" y="386" width="460" height="72" rx="10" fill="var(--surface)" stroke="var(--border)" />
+  <text x="110" y="408" font-size="11" letter-spacing="1" fill="var(--text-dim)">GITHUB ACTIONS · CI/CD</text>
+  <text x="110" y="430" class="serif" font-size="16" font-weight="600" fill="var(--text)">Static HTML workflow</text>
+  <text x="110" y="448" font-size="11" fill="var(--text-dim)">generates config.js from a repo secret, then uploads the site — no build step</text>
+
+  <!-- Arrow: deploy -->
+  <line x1="320" y1="458" x2="320" y2="490" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrowAccent)" />
+  <text x="336" y="478" font-size="11" fill="var(--accent)">deploy_pages</text>
+
+  <!-- Pages -->
+  <rect x="90" y="492" width="460" height="72" rx="10" fill="var(--surface)" stroke="var(--border)" />
+  <text x="110" y="514" font-size="11" letter-spacing="1" fill="var(--text-dim)">GITHUB PAGES · STATIC HOSTING</text>
+  <text x="110" y="536" font-size="13" font-weight="500" fill="var(--text)">blevenstein-atx.github.io/discogs-duration</text>
+  <text x="110" y="552" class="sans" font-size="11" fill="var(--text-dim)">serves index.html, styles.css, app.js, config.js</text>
+
+  <!-- Arrow: serve -->
+  <line x1="320" y1="564" x2="320" y2="598" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrowAccent)" />
+  <text x="336" y="584" font-size="11" fill="var(--accent)">serves index.html, app.js</text>
+
+  <!-- Browser -->
+  <rect x="20" y="602" width="260" height="96" rx="10" fill="var(--surface)" stroke="var(--border)" />
+  <text x="40" y="626" font-size="11" letter-spacing="1" fill="var(--text-dim)">VISITOR'S BROWSER</text>
+  <text x="40" y="648" class="serif" font-size="15" font-weight="600" fill="var(--text)">Where the app runs</text>
+  <text x="40" y="666" class="sans" font-size="11" fill="var(--text-dim)">loads static files,</text>
+  <text x="40" y="681" class="sans" font-size="11" fill="var(--text-dim)">executes your JS client-side</text>
+
+  <!-- Discogs -->
+  <rect x="360" y="602" width="260" height="96" rx="10" fill="var(--surface)" stroke="var(--border)" />
+  <text x="380" y="626" font-size="11" letter-spacing="1" fill="var(--text-dim)">DISCOGS.COM</text>
+  <text x="380" y="648" class="serif" font-size="15" font-weight="600" fill="var(--text)">Discogs API</text>
+  <text x="380" y="666" font-size="11" fill="var(--text-dim)">/releases/{id} · /database/search</text>
+  <text x="380" y="681" class="sans" font-size="11" fill="var(--text-dim)">public release data</text>
+
+  <!-- Live exchange -->
+  <line x1="282" y1="636" x2="356" y2="636" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrowAccent)" />
+  <text x="319" y="629" text-anchor="middle" font-size="11" fill="var(--accent)">fetch()</text>
+
+  <line x1="356" y1="666" x2="282" y2="666" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrowAccent)" />
+  <text x="319" y="684" text-anchor="middle" font-size="11" fill="var(--accent)">JSON</text>
+</svg>

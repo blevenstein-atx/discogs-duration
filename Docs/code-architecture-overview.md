@@ -1,6 +1,12 @@
-# Code Architecture Overview
+# Architecture Overview
 
-What each file in the MVP build does, and how they fit together. Written as a reference for explaining the build to someone else (e.g. in an interview) without assuming they've seen the code.
+How the pipeline is put together, and what each file in the MVP build does. Written as a reference for explaining the build to someone else (e.g. in an interview) without assuming they've seen the code.
+
+## The deployment pipeline
+
+![Diagram of the discogs-duration pipeline: local Mac tooling pushes to a public GitHub repo, which triggers a GitHub Actions workflow that deploys to GitHub Pages; from there, a visitor's browser fetches release data directly from the Discogs API.](architecture-diagram.svg)
+
+Local tooling on the left/top (nothing there ships) feeds a public GitHub repo. A push to `main` triggers a GitHub Actions workflow, which generates `config.js` from a repository secret and publishes the site to GitHub Pages — no build step. From there, a visitor's own browser loads the static files and calls the Discogs API directly; nothing in this pipeline is a server we operate ourselves. Every stage shown here is built, deployed, and confirmed working end to end, including the live `fetch()`/JSON exchange with Discogs.
 
 ## The shape of the app
 
