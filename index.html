@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Release Duration Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="card">
+    <div class="eyebrow">Discogs database tool</div>
+    <h1>Release Duration Calculator</h1>
+    <p class="instructions">
+      Enter a discogs release URL or discogs release ID to calculate the release's total duration.
+      Master release records are not supported, only specific child releases.
+    </p>
+
+    <form id="calc-form" novalidate>
+      <label for="release-input">Release URL or ID</label>
+      <div class="input-row">
+        <input
+          type="text"
+          id="release-input"
+          name="release-input"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="https://www.discogs.com/release/547049-Gorillaz-Demon-Days"
+        >
+        <button type="submit" id="calculate-btn" disabled>Calculate Duration</button>
+      </div>
+    </form>
+
+    <hr class="divider">
+
+    <div id="error-banner" class="error-banner" hidden>
+      <span class="error-icon" aria-hidden="true">&#9888;</span>
+      <span id="error-message"></span>
+    </div>
+
+    <div id="results" class="results" hidden>
+      <div class="results-grid">
+        <section class="results-col">
+          <h2>Release Information</h2>
+          <dl id="metadata-list" class="metadata-list"></dl>
+        </section>
+        <section class="results-col">
+          <h2>Calculation Breakdown</h2>
+          <div id="calc-breakdown" class="calc-breakdown"></div>
+        </section>
+      </div>
+
+      <div class="grand-total">
+        <span class="grand-total-label">Grand Total Duration</span>
+        <span id="grand-total-value" class="grand-total-value"></span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="clear-btn" disabled>Clear Results</button>
+    </div>
+  </main>
+
+  <!-- config.js is not committed (see .gitignore). Locally, copy config.example.js to
+       config.js and fill in a real token. In production, GitHub Actions generates it
+       at deploy time from a repository secret. -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
