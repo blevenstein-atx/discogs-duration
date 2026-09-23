@@ -191,6 +191,11 @@ Two other live-testing findings, not yet resolved:<br>
 **Decision:** RU-7 (`release/2240787`, Tony Bennett & Bill Evans, multi-artist), DF-2 (`release/191013`, missing-time standard release), and DF-3 (`release/16000948`, missing-time box-set item) all passed as specified. Also ran an unplanned bonus 404 case (a made-up release ID) since a live 404 needed no mocked data — passed, correct "does not exist" message. RU-5/RU-6's URL (`release/25863751`, New Order "Low-life" box set) could not actually be tested as a success case: the release's real Discogs data has empty `duration` on all of its vinyl-side tracks (A1–B4), so the app correctly returns the missing-time error per the DF-2 all-or-nothing rule — this test case's URL doesn't meet its own precondition (all tracks timed) on real data. Inspecting that release's raw tracklist also confirmed the DC-5 "Side CD"/"Side DVD" labeling issue isn't unique to the Brotherhood box set — any multi-format release grouped by position prefix hits the same letter-prefix-means-"Side" heuristic (`CD1-1`, `DVD1-1`, etc. all match the side-grouping regex).<br>
 **Reasoning:** Same practice as the entry above — real data can disconfirm a test case's assumptions as easily as it can disconfirm app logic, and both are worth recording distinctly. RU-5/RU-6 needs a replacement URL from Bruce, same as DC-6, once he has a working multi-format-with-full-track-times example. DC-7 re-test (to confirm the `type_:index` fix, commit `1f9fab0`) is pending Bruce pushing that commit and Pages redeploying.<br>
 
+### 2026-09-23 — Testing<br>
+**Question:** Did the `type_:index` fix (commit `1f9fab0`) actually resolve DC-7 once deployed?<br>
+**Decision:** Confirmed live against `release/4000806` (Genesis, "The Lamb Lies Down On Broadway") after Pages redeployed at commit `045367c` (run #28): "The Colony Of Slippermen" now appears as its own breakdown group at 8:00, and the grand total moved from the prior undercounted `01:29:29` to the correct `01:37:29` — exactly the expected +8:00. DC-7 is closed.<br>
+**Reasoning:** Closing the loop per the standing practice of confirming a fix against the same live case that surfaced the bug, not just re-running the unit-test harness.<br>
+
 ---
 
 ## Open Questions / Unresolved
