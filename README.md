@@ -2,7 +2,32 @@
 
 A small web app that takes a Discogs release (URL or release ID) and calculates the album's total running time from its tracklist — something Discogs itself doesn't display.
 
-**Status:** MVP is built, deployed, and live-tested against the real Discogs API. Try it: **[blevenstein-atx.github.io/discogs-duration](https://blevenstein-atx.github.io/discogs-duration/)**
+**Status:** MVP is built, deployed, and live-tested against the real Discogs API. **Live URL available upon request** — the app calls the Discogs API using a personal access token, so the deployed link is shared privately with trusted people rather than published here.
+
+## About this project
+
+This is not a "vibe coding" demo — prompting an AI for code and accepting whatever comes back with little scrutiny. It's a real, live, co-developed application built with a defined division of labor:
+
+- **Bruce Levenstein — Product Manager.** Owned scope, requirements, prioritization, requirements review, and acceptance of every deliverable.
+- **Claude — architect, software engineer, and QA tester.** Proposed and implemented the technical architecture, wrote the application code, and ran (and re-ran) testing against the live app and the real Discogs API.
+
+The repo below is the record of that process, not just the finished app — every phase produced a document, and the [decision log](Docs/decision-log.md) ties dated decisions back to the reasoning behind them. This README is meant to stand on its own as that record, including for anyone evaluating this as a work sample.
+
+## The development process
+
+**1. Tooling & infrastructure setup** — Repo hosting (GitHub over GitLab), the deploy pipeline (GitHub Pages via GitHub Actions), and the auth approach (a personal Discogs access token, injected at deploy time from a repository secret, over OAuth) were decided and stood up before any requirements work began. Reasoning for each is in the [decision log](Docs/decision-log.md) (entries tagged *Tooling*).
+
+**2. Scope definition** — MVP, 2.0, and Future scope were defined and separated up front, so the MVP build stayed bounded. See [`Docs/scope.md`](Docs/scope.md).
+
+**3. Requirements definition** — Detailed requirements, each with a traceability ID (input validation, tracklist-shape handling, UI behavior, error rules, and more), were written up before any code. See [`Docs/discogs_duration_PRD.md`](Docs/discogs_duration_PRD.md).
+
+**4. Requirements review & fixes** — A standing "no building before requirements review" agreement held for the whole requirements phase. PRD v1 was reviewed and explicitly rated **not ready to build against**: the review surfaced a real logical conflict (a box-set heading was being used two contradictory ways — a title to sub-total under, and a heading to ignore) and a requirement that turned out to be technically infeasible (detecting when a bare numeric ID collides with an unrelated master release, confirmed infeasible by testing rather than assumed). Both were fixed before PRD v2 was approved to build against. Claims were checked empirically along the way, including Claude's own: whether a browser could call the Discogs API at all without a custom `User-Agent` header (browser JS can't set one) was resolved with a real `fetch()` test against the live API, and an initial "worst case is a rate limit" risk assessment for the personal token was corrected — once checked against Discogs' own auth documentation — to the accurate finding of full account-level access, which is what's on record in the PRD's Risks section, named and accepted before any build work started.
+
+**5. Build** — Implementation followed the approved PRD. Plain HTML/CSS/JS, no framework, no backend for MVP — see [Architecture](#architecture) below and [`Docs/code-architecture-overview.md`](Docs/code-architecture-overview.md) for the full breakdown.
+
+**6. Test** — [`Docs/discogs_duration_test_data.md`](Docs/discogs_duration_test_data.md) maps a real Discogs release (or, for a handful of edge cases that don't occur on real data, a synthetic example) to every requirement ID in the PRD. Every live-testable case was run against the deployed app and the real Discogs API.
+
+**7. Fix** — Live testing found and drove fixes for two real issues after the initial build: a tracklist entry type (`type_:"index"`, used for medley/suite tracks) the build's assumptions hadn't accounted for, which was undercounting one release's total by exactly the length of the missed medley; and an ambiguous group-labeling rule on multi-format box sets (`Side CD`/`Side DVD`, and multiple DVDs silently merged into one total) that Bruce turned into new PRD requirements (DC-8, DC-9) once identified, which Claude then implemented and re-verified live. Both are dated and reasoned in the [decision log](Docs/decision-log.md).
 
 ## What it does
 
@@ -11,8 +36,6 @@ A small web app that takes a Discogs release (URL or release ID) and calculates 
 - Handles the real-world shapes Discogs data actually comes in: vinyl/cassette sides (`Side A`, `Side B`), multi-disc box sets (`CD1`, `CD2`, `DVD1`...), and medley/suite tracks that list one combined time instead of per-track times.
 - If any track's time is missing or looks malformed, the app refuses to show a total rather than guessing or showing a partial number — an intentional, strict rule (see [Testing](#testing) below for why that mattered in practice).
 - Public Discogs data only — no login, no access to anyone's own Discogs account.
-
-Full scope, including the 2.0 and Future roadmap, is in [`Docs/scope.md`](Docs/scope.md). Detailed requirements (with traceability IDs) are in [`Docs/discogs_duration_PRD.md`](Docs/discogs_duration_PRD.md).
 
 ## Architecture
 
@@ -23,19 +46,6 @@ Plain HTML/CSS/JS — no framework, no build step, no backend. A push to `main` 
 A full breakdown of what each file does is in [`Docs/code-architecture-overview.md`](Docs/code-architecture-overview.md).
 
 2.0 and beyond introduce a Node.js/React frontend and an AWS-hosted backend — see [`Docs/scope.md`](Docs/scope.md).
-
-## This was a coding-collaborator process, not vibe coding
-
-This project doubles as evidence of what a Product Manager (20 years of BA/PM experience, not a hands-on coder) contributes when directing AI-assisted software development — as distinct from "vibe coding," prompting and accepting whatever comes back without much scrutiny. The distinction isn't just a label; the process here earns it:
-
-- **Scope was fixed before any code existed.** A standing "no building before requirements review" agreement held for the entire requirements phase. PRD v1 was reviewed and explicitly rated *not ready to build against* — a real logical conflict and a broken requirement were found and fixed before v2 was approved.
-- **Requirements were reviewed, not just accepted.** The review surfaced a genuine logical conflict (a box-set heading was being used two contradictory ways — a title to sub-total under, and a heading to ignore) and a requirement that turned out to be technically infeasible (detecting when a bare numeric ID collides with an unrelated master release), which testing confirmed rather than assumed.
-- **Claims were checked empirically, including Claude's.** Whether a browser could call the Discogs API at all without a custom `User-Agent` header (browser JS can't set one) was resolved with a real `fetch()` test against the live API, not by asking and moving on. The personal-token risk assessment was corrected the same way — an initial "worst case is a rate limit" claim turned out to be wrong once checked against Discogs' own auth documentation; the corrected understanding (full account-level access), not the first answer, is what's on record.
-- **Every architectural and tooling choice has a documented reason**, in [`Docs/decision-log.md`](Docs/decision-log.md) — GitHub over GitLab, personal token over OAuth, no framework for MVP, Figma AI here versus Lovable kept to a separate project, and dozens more, each dated with the question, decision, and reasoning.
-- **Risk was named and explicitly accepted, not ignored.** The PRD's Risks section states the token-exposure risk plainly and why it's acceptable for this specific audience (personal use plus a small circle of friends) — on the record before any build work, not discovered after the fact.
-- **The process kept working after launch, not just before it.** Live testing against real Discogs releases found a real bug (a tracklist entry type the build's assumptions hadn't accounted for, undercounting one release's total) and a real requirements gap (ambiguous group labeling on multi-format box sets) — both traced, fixed, verified against the same live case that surfaced them, and logged with reasoning, the same discipline applied throughout the build.
-
-None of this is how vibe coding works. The decision log is the artifact that makes the difference checkable, not just claimed.
 
 ## Why this app
 
@@ -55,7 +65,7 @@ Most AI-coding demos are greenfield-only: generate an app from scratch and stop.
 
 ## Testing
 
-Manual and live, deliberately — no test framework for MVP (a v2 scope item introduces automated regression testing). [`Docs/discogs_duration_test_data.md`](Docs/discogs_duration_test_data.md) maps one real Discogs release (or, for a handful of edge cases that don't occur on real data, a synthetic example) to every requirement ID in the PRD. Every live-testable case has been run against the deployed app and the real Discogs API; results and any findings are in the decision log. A few genuinely rare edge cases (malformed upstream data, a release missing its tracklist entirely, a merged/deleted release, a network failure) were deliberately left untested for MVP as a logged scope decision, not an oversight.
+Manual and live, deliberately — no test framework for MVP (a v2 scope item introduces automated regression testing). [`Docs/discogs_duration_test_data.md`](Docs/discogs_duration_test_data.md) maps one real Discogs release (or, for a handful of edge cases that don't occur on real data, a synthetic example) to every requirement ID in the PRD. Every live-testable case has been run against the deployed app and the real Discogs API; results and any findings are in the [decision log](Docs/decision-log.md). A few genuinely rare edge cases (malformed upstream data, a release missing its tracklist entirely, a merged/deleted release, a network failure) were deliberately left untested for MVP as a logged scope decision, not an oversight.
 
 ## Repo layout
 
