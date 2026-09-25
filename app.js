@@ -175,22 +175,37 @@
       return { ok: true, grandTotalSeconds: grand, groups };
     }
 
-    // No headings — group by position prefix: numeric "1-1" (item/disc) or
-    // letter "A1"/"AA1" (side).
+    // No headings — group by position prefix:
+    //   numeric "1-1" (plain multi-item/disc, DC-4)
+    //   letters+digits with a dash, e.g. "CD1-1"/"DVD2-3" (format code, DC-9)
+    //   bare letters+digits with no dash, e.g. "A1"/"AA1" (vinyl/cassette side, DC-8)
+    // A single release can mix side groups and format-code groups (e.g. a box
+    // set with vinyl + CD + DVD, DC-5), so all three are collected and
+    // rendered together rather than being mutually exclusive.
     const itemGroups = new Map();
+    const formatGroups = new Map(); // key: "LETTERS|DIGITS" -> { letters, digits, tracks }
     const sideGroups = new Map();
     let sawItemStyle = false;
+    let sawFormatStyle = false;
     let sawSideStyle = false;
 
     for (const t of flatTracks) {
       const pos = (t.position || "").trim();
       const itemMatch = /^(\d+)-/.exec(pos);
-      const sideMatch = /^([A-Za-z]+)/.exec(pos);
+      const formatMatch = /^([A-Za-z]+)(\d*)-/.exec(pos);
+      const sideMatch = /^([A-Za-z]+)(\d+)$/.exec(pos);
       if (itemMatch) {
         sawItemStyle = true;
         const key = itemMatch[1];
         if (!itemGroups.has(key)) itemGroups.set(key, []);
         itemGroups.get(key).push(t);
+      } else if (formatMatch) {
+        sawFormatStyle = true;
+        const letters = formatMatch[1].toUpperCase();
+        const digits = formatMatch[2] || "";
+        const key = `${letters}|${digits}`;
+        if (!formatGroups.has(key)) formatGroups.set(key, { letters, digits, tracks: [] });
+        formatGroups.get(key).tracks.push(t);
       } else if (sideMatch) {
         sawSideStyle = true;
         const key = sideMatch[1].toUpperCase();
@@ -202,26 +217,41 @@
       }
     }
 
-    let grand = 0;
-    const groups = [];
+    if (sawItemStyle || sawFormatStyle || sawSideStyle) {
+      let grand = 0;
+      const groups = [];
 
-    if (sawItemStyle) {
-      for (const [key, tracks] of itemGroups) {
-        const summed = sumTracks(tracks);
-        if (summed.error) return { ok: false, reason: summed.error };
-        grand += summed.total;
-        groups.push({ type: "item", label: key === "_" ? null : `Item ${key}`, total: summed.total });
-      }
-      return { ok: true, grandTotalSeconds: grand, groups };
-    }
-
-    if (sawSideStyle) {
+      // Sides first (DC-8): "Side A", "Side AA", ...
       for (const [key, tracks] of sideGroups) {
         const summed = sumTracks(tracks);
         if (summed.error) return { ok: false, reason: summed.error };
         grand += summed.total;
         groups.push({ type: "side", label: `Side ${key}`, total: summed.total });
       }
+
+      // Format-code groups next (DC-9): collapse to a bare code ("CD") when
+      // only one group of that format exists; use numbered codes ("CD1",
+      // "CD2") when there's more than one of that format.
+      const lettersCounts = new Map();
+      for (const { letters } of formatGroups.values()) {
+        lettersCounts.set(letters, (lettersCounts.get(letters) || 0) + 1);
+      }
+      for (const { letters, digits, tracks } of formatGroups.values()) {
+        const summed = sumTracks(tracks);
+        if (summed.error) return { ok: false, reason: summed.error };
+        grand += summed.total;
+        const label = lettersCounts.get(letters) > 1 ? `${letters}${digits}` : letters;
+        groups.push({ type: "item", label, total: summed.total });
+      }
+
+      // Numbered-item groups (DC-4): "Item 1", "Item 2", ...
+      for (const [key, tracks] of itemGroups) {
+        const summed = sumTracks(tracks);
+        if (summed.error) return { ok: false, reason: summed.error };
+        grand += summed.total;
+        groups.push({ type: "item", label: key === "_" ? null : `Item ${key}`, total: summed.total });
+      }
+
       return { ok: true, grandTotalSeconds: grand, groups };
     }
 
