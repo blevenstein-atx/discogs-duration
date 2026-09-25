@@ -115,7 +115,7 @@ Expected Result: Display a message: Please use a specific release URL or ID.
 **RU-5, RU-6**
 
 
-Example discogs URL: https://www.discogs.com/release/25863751-New-Order-Low-Life
+Example discogs URL: https://www.discogs.com/release/32391060-New-Order-Brotherhood
 
 **RU-7**
 
@@ -151,7 +151,7 @@ Example discogs URL: https://www.discogs.com/release/32391060-New-Order-Brotherh
 **DC-6**
 
 
-Example discogs URL: https://www.discogs.com/master/192783-Kate-Bush-This-Womans-Work-Anthology-1978-1990
+Example discogs URL: https://www.discogs.com/release/1040301-Kate-Bush-This-Womans-Work-Anthology-1978-1990
 
 **DC-7**
 

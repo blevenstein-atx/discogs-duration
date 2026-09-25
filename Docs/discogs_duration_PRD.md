@@ -108,7 +108,7 @@ Keeping these intentionally simple and lightweight, no UML or mermaid diagrams o
 **RU-2.** In all success and error cases, the input URL or ID should remain in the input field. The user has the ability to edit or replace the input and try again.<br>
 **RU-3.** The results should have two sections: Release metadata, and the duration calculation<br>
 **RU-4.** Release metadata to include: Discogs release ID, Artist, Title, Label, Format, Country, Released date<br>
-**RU-5.** For release with multiple formats, display all the contained formats. For example: https://www.discogs.com/release/25863751-New-Order-Low-Life<br>
+**RU-5.** For release with multiple formats, display all the contained formats. For example: https://www.discogs.com/release/32391060-New-Order-Brotherhood<br>
 **RU-6.** In the case of releases with multiple format values, present this as a single line with comma-joined values.<br>
 **RU-7.** In the case of multi-artist releases (i.e. compilations), display the multiple artists as comma-joined.<br>
 **RU-8.** Include a Clear results button. This button clears the input field and the results, so the user can enter new input and try again. The user also has the option to manually replace the input value and click Calculate Duration, which replaces the current results with new results. The Clear Results button should be disabled when no results are displayed.
@@ -124,6 +124,8 @@ Keeping these intentionally simple and lightweight, no UML or mermaid diagrams o
 **DC-5.** In the case of releases with multiple mixed formats, such as box sets with vinyl and CDs, treat these the same as multi-item releases. Include item Duration totals for each item.<br>
 **DC-6.** In the case of multi-disc sets, such as box sets, and releases with a suite/medley, include the title for each item with a header above its sub-total track time. These titles can be found in headers within the track list. For example: https://www.discogs.com/release/25863751-New-Order-Low-Life has headers of Low-life, Extras, Live In Tokyo 1985, and more.<br>
 **DC-7.** In the case of releases with a multi-track medley/suite, these will appear in the track list with a medley/suite section header and indented track, such as: https://www.discogs.com/release/4000806-Genesis-The-Lamb-Lies-Down-On-Broadway. The medley/suite section header may have a duration, while the contained tracks do not. If the contained tracks do have times, use those times. If the contained tracks have no individual times, use the time in the medley/suite header.
+**DC-8.** In the case of tracks with letter prefixes such as A, AA, and B, label these groupings as Side A, Side AA, Side B. This applies to multi-sided formats such as vinyl and cassettes.
+**DC-9.** In the case of non-multi-sided formats such as CD and DVD, use the format code. For example, if the release has a single CD or DVD, use CD or DVD. If the release has multiple CDs or multiple DVDs, use CD1, CD2, DVD1, DVD2.
 
 
 ### Failure cases
