@@ -254,3 +254,17 @@ button {
   justify-content: flex-end;
   margin-top: 20px;
 }
+
+.build-info {
+  position: fixed;
+  left: 12px;
+  bottom: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  opacity: 0.7;
+}
+
+.build-info[hidden] {
+  display: none;
+}

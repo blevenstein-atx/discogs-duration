@@ -59,10 +59,14 @@
     </div>
   </main>
 
-  <!-- config.js is not committed (see .gitignore). Locally, copy config.example.js to
-       config.js and fill in a real token. In production, GitHub Actions generates it
-       at deploy time from a repository secret. -->
+  <footer id="build-info" class="build-info" hidden></footer>
+
+  <!-- config.js and build-info.js are not committed (see .gitignore). Locally, copy
+       config.example.js to config.js (fill in a real token) and build-info.example.js
+       to build-info.js. In production, GitHub Actions generates both at deploy time:
+       config.js from a repository secret, build-info.js from the deploy commit/date. -->
   <script src="config.js"></script>
+  <script src="build-info.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -36,6 +36,11 @@ jobs:
       - name: Generate config.js from secret
         run: |
           echo "window.DISCOGS_CONFIG = { token: \"${{ secrets.DISCOGS_TOKEN }}\" };" > config.js
+      - name: Generate build-info.js (UI-9)
+        run: |
+          SHA=$(git rev-parse --short HEAD)
+          DATE=$(date +"%m-%d-%Y")
+          echo "window.BUILD_INFO = { sha: \"$SHA\", date: \"$DATE\" };" > build-info.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

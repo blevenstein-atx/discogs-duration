@@ -273,6 +273,12 @@
     return `${m}:${pad2(s)}`;
   }
 
+  // ---------- Build/deploy info footer (UI-9) ----------
+  function formatBuildInfo(info) {
+    if (!info || !info.sha || !info.date) return null;
+    return `last deployed: ${info.sha}, ${info.date}`;
+  }
+
   // ---------- Metadata formatting (RU-4..RU-7) ----------
   function formatArtists(release) {
     if (!release.artists || release.artists.length === 0) return "—";
@@ -510,6 +516,16 @@
     results.hidden = true;
   });
 
+  // ---------- Build info footer render (UI-9) ----------
+  const buildInfoEl = document.getElementById("build-info");
+  if (buildInfoEl) {
+    const buildInfoText = formatBuildInfo(window.BUILD_INFO);
+    if (buildInfoText) {
+      buildInfoEl.textContent = buildInfoText;
+      buildInfoEl.hidden = false;
+    }
+  }
+
   // Exposed for local/unit testing (see Docs/discogs_duration_test_data.md).
   window.__DiscogsDurationInternals = {
     validateInput,
@@ -517,5 +533,6 @@
     computeDurations,
     formatDuration,
     formatReleaseDate,
+    formatBuildInfo,
   };
 })();
