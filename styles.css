@@ -25,6 +25,7 @@ body {
 }
 
 .card {
+  position: relative;
   max-width: 900px;
   margin: 0 auto;
   background: var(--card-bg);
@@ -256,9 +257,9 @@ button {
 }
 
 .build-info {
-  position: fixed;
-  left: 12px;
-  bottom: 8px;
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
   font-family: var(--mono);
   font-size: 11px;
   color: var(--text-dim);
