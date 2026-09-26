@@ -94,7 +94,7 @@ Keeping these intentionally simple and lightweight, no UML or mermaid diagrams o
 
 **UI-1.** For MVP, follow the UI concept produced via Figma AI (see `Docs/figma-concepts/`) rather than attempting to replicate the Discogs website's own styling exactly. In v2, using React with Material UI components may allow the app to look more polished than Discogs' own site, rather than just matching it.
 
-**UI-2.** At the top of the UI place the app name: Release Duration Calculator<br>
+**UI-2.** At the top of the UI place the app name: Discogs Release Duration Calculator<br>
 **UI-3.** Beneath the app name and above the input field place instructions: Enter a discogs release URL or discogs release ID to calculate the release's total duration. Master release records are not supported, only specific child releases.<br>
 **UI-4.** A single input field for entering either a release URL or release ID. Field label: Release URL or ID<br>
 **UI-5.** Make the input field long enough to limit truncation of an entered URL.<br>
@@ -111,7 +111,8 @@ Keeping these intentionally simple and lightweight, no UML or mermaid diagrams o
 **RU-5.** For release with multiple formats, display all the contained formats. For example: https://www.discogs.com/release/32391060-New-Order-Brotherhood<br>
 **RU-6.** In the case of releases with multiple format values, present this as a single line with comma-joined values.<br>
 **RU-7.** In the case of multi-artist releases (i.e. compilations), display the multiple artists as comma-joined.<br>
-**RU-8.** Include a Clear results button. This button clears the input field and the results, so the user can enter new input and try again. The user also has the option to manually replace the input value and click Calculate Duration, which replaces the current results with new results. The Clear Results button should be disabled when no results are displayed.
+**RU-8.** Include a Clear results button. This button clears the input field and the results, so the user can enter new input and try again. The user also has the option to manually replace the input value and click Calculate Duration, which replaces the current results with new results. The Clear Results button should be disabled when no results are displayed.<br>
+**RU-9**. Display release date in this format: Mon D, YYYY. If the returned release date has only a year, then use YYYY. If the returned release date has only a month and day, use Mon D.
 
 ## Duration Calculation Section
 
