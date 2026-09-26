@@ -33,16 +33,6 @@ body {
   padding: 32px;
 }
 
-.eyebrow {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-
 h1 {
   margin: 0 0 12px;
   font-size: 28px;

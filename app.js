@@ -298,6 +298,43 @@
       .join(", ");
   }
 
+  // ---------- Release date formatting (RU-9) ----------
+  const MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  function formatReleaseDate(raw) {
+    if (!raw) return "—";
+    const value = String(raw).trim();
+
+    // Full date, e.g. "1978-11-10" -> "Nov 10, 1978"
+    let m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+    if (m) {
+      const [, year, month, day] = m;
+      const monthIdx = parseInt(month, 10) - 1;
+      if (monthIdx >= 0 && monthIdx < 12) {
+        return `${MONTH_ABBR[monthIdx]} ${parseInt(day, 10)}, ${year}`;
+      }
+    }
+
+    // Year only, e.g. "1992" -> "1992"
+    if (/^\d{4}$/.test(value)) {
+      return value;
+    }
+
+    // Month and day only, no year, e.g. "11-10" -> "Nov 10"
+    m = /^(\d{2})-(\d{2})$/.exec(value);
+    if (m) {
+      const [, month, day] = m;
+      const monthIdx = parseInt(month, 10) - 1;
+      if (monthIdx >= 0 && monthIdx < 12) {
+        return `${MONTH_ABBR[monthIdx]} ${parseInt(day, 10)}`;
+      }
+    }
+
+    // Unrecognized shape (e.g. Discogs literal text like "Unknown") -> show as-is.
+    return value;
+  }
+
   // ---------- Rendering ----------
   function showError(message) {
     errorMessage.textContent = message;
@@ -324,7 +361,7 @@
       ["Label", formatLabels(release)],
       ["Format", formatFormats(release)],
       ["Country", release.country || "—"],
-      ["Released", release.released || "—"],
+      ["Released", formatReleaseDate(release.released)],
     ];
     for (const [label, value] of fields) {
       const dt = document.createElement("dt");
@@ -479,5 +516,6 @@
     parseDurationToken,
     computeDurations,
     formatDuration,
+    formatReleaseDate,
   };
 })();
