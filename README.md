@@ -73,6 +73,7 @@ Manual and live, deliberately — no test framework for MVP (a v2 scope item int
 - [`Docs/discogs_duration_PRD.md`](Docs/discogs_duration_PRD.md) — detailed requirements, with traceability IDs linking to the test data below.
 - [`Docs/discogs_duration_test_data.md`](Docs/discogs_duration_test_data.md) — one real (or synthetic) test case per requirement ID.
 - [`Docs/decision-log.md`](Docs/decision-log.md) — dated record of every tooling, architecture, and requirements decision, and why.
+- [`Docs/change-request-log.md`](Docs/change-request-log.md) — tracked change requests (bug fixes, post-approval requirement changes) with source, disposition, and links back to the decision log and commits.
 - [`Docs/code-architecture-overview.md`](Docs/code-architecture-overview.md) and [`Docs/architecture-diagram.svg`](Docs/architecture-diagram.svg) — what each file does and how the deployment pipeline fits together.
 - [`Docs/figma-concepts/`](Docs/figma-concepts/) — the AI-generated UI mockups the MVP's visual design targets.
 - [`postman/`](postman/) — OpenAPI spec and Postman collections for the Discogs endpoints this app uses.
