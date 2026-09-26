@@ -100,7 +100,8 @@ Keeping these intentionally simple and lightweight, no UML or mermaid diagrams o
 **UI-5.** Make the input field long enough to limit truncation of an entered URL.<br>
 **UI-6.** A button to submit the API request. The button should be grey/disabled until something is entered into the input field. Button label: Calculate Duration<br>
 **UI-7.** The Calculate Duration button should be disabled after clicking, while the API response is in progress, to prevent double-submit. (the Discogs response is expected to be fast, so displaying a loading/pending state is not necessary.)<br>
-**UI-8.** Input validation occurs when the button is clicked, either returning a validation error described above, or triggering the API request. Don't erase the user input, allow them to edit it and try again.
+**UI-8.** Input validation occurs when the button is clicked, either returning a validation error described above, or triggering the API request. Don't erase the user input, allow them to edit it and try again.<br>
+**UI-9.** Display the app's build/deploy identifier in small text in the footer, lower-left corner: "last deployed: `<short-commit-sha>`, MM-DD-YYYY" (e.g. "last deployed: `130a3b5`, 09-26-2026"). Generated automatically at deploy time (same mechanism as `config.js`), not manually maintained.
 
 # Results UI
 
