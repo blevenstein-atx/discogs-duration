@@ -145,6 +145,10 @@ button {
   font-size: 14px;
 }
 
+.error-banner[hidden] {
+  display: none;
+}
+
 .error-icon {
   font-size: 16px;
   line-height: 1;
