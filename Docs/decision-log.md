@@ -226,6 +226,11 @@ Two other live-testing findings, not yet resolved:<br>
 **Decision:** Yes, but as an automatically-generated build stamp rather than a hand-maintained semver number: added UI-9 to the PRD (footer, lower-left, small text, "last deployed: `<short-sha>`, MM-DD-YYYY"). Implemented via `formatBuildInfo()` in `app.js` rendering `window.BUILD_INFO` at page load, with the GitHub Actions deploy workflow generating `build-info.js` (short commit SHA + date) the same way it already generates `config.js` from a secret. Committed as `db4e476`, verified against the local Node test harness (50/50 passing, including 4 new UI-9 cases) before committing.<br>
 **Reasoning:** A hand-maintained version number has no natural bump rule for a single-developer personal tool and would go stale within a few commits; an automated commit-SHA-plus-date stamp solves the actual problem (confirming you're not looking at a stale cached build) with no ongoing maintenance, reusing a deploy-time-generation mechanism that already exists for `config.js`.<br>
 
+### 2026-09-26 — Implementation / Bug fix
+**Question:** Bruce's manual test of the deployed UI-9 footer found it pinned to the very bottom of the browser viewport (`position: fixed`) — easy to miss, and scrolled out of view on a tall page. Where should it actually sit?<br>
+**Decision:** Moved the footer inside `<main class="card">` and switched it from `position: fixed` (viewport corner) to `position: absolute` anchored to the card itself (`.card` given `position: relative`), so it sits in the lower-left corner of the app's white frame and tracks the card's actual bottom edge regardless of the card's current height (empty state vs. results shown). Commit `42937a2`.<br>
+**Reasoning:** The original placement matched the PRD text literally ("footer, lower-left corner") but read that as the browser viewport rather than the app's own visual frame — a reasonable implementation choice that turned out not to be what was wanted once seen live, exactly the kind of thing manual UI review catches that isn't visible from reading code or requirements text alone.<br>
+
 ---
 
 ## Open Questions / Unresolved

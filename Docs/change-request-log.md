@@ -11,6 +11,7 @@ Each row links to the decision-log entry with the full reasoning, and to the com
 | CR-3 | 2026-09-26 | Error banner (red, empty message) displayed on page load and after a successful calculation, not just on an actual error | Bruce's manual testing pass | Approved | commit `130a3b5`, decision-log 2026-09-26 |
 | CR-4 | 2026-09-26 | UI-2: fold app name into header, drop separate eyebrow line; RU-9: add explicit release-date formatting rule | Bruce (PRD/Figma update) | Approved | commit `bbfe6f4`, decision-log 2026-09-26 |
 | CR-5 | 2026-09-26 | UI-9: display a build/deploy identifier (footer, lower-left) so a stale cached build can be told apart from the latest deploy | Bruce | Approved | commit `db4e476`, decision-log 2026-09-26 |
+| CR-6 | 2026-09-26 | UI-9 footer was pinned to the browser viewport's lower-left corner (easy to miss, scrolls out of view below the fold); moved into the app's white card frame instead | Bruce's manual testing | Approved | commit `42937a2`, decision-log 2026-09-26 |
 
 ---
 
