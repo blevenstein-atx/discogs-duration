@@ -10,6 +10,7 @@ Each row links to the decision-log entry with the full reasoning, and to the com
 | CR-2 | 2026-09-25 | Multi-format box-set groups (CD/DVD) mislabeled as "Side CD"/"Side DVD"; multiple DVD discs silently merged into one group | Live testing (flagged 2026-09-23), turned into requirements DC-8/DC-9 | Approved | commit `749ed14`, decision-log 2026-09-25 |
 | CR-3 | 2026-09-26 | Error banner (red, empty message) displayed on page load and after a successful calculation, not just on an actual error | Bruce's manual testing pass | Approved | commit `130a3b5`, decision-log 2026-09-26 |
 | CR-4 | 2026-09-26 | UI-2: fold app name into header, drop separate eyebrow line; RU-9: add explicit release-date formatting rule | Bruce (PRD/Figma update) | Approved | commit `bbfe6f4`, decision-log 2026-09-26 |
+| CR-5 | 2026-09-26 | UI-9: display a build/deploy identifier (footer, lower-left) so a stale cached build can be told apart from the latest deploy | Bruce | Approved | commit `db4e476`, decision-log 2026-09-26 |
 
 ---
 
