@@ -12,13 +12,12 @@
 - Small set of real release IDs mapped to each supported edge case, to be used as a lighweight test suite
 
 ## 2.0
-- Add Node.js, React (maybe Material UI components), and AWS to the architecture
-- Registered custom domain name
+- Add Node.js, React (shadcn/ui + Tailwind), and AWS (Lambda + API Gateway) to the architecture
+- Registered custom domain name (probably Cloudflare Registrar)
 - Add Vercel or Netlify to replace GitHub Pages
 - Handling for more edge cases around unpredictable/partial release track time data
 - Handling for more multi-album and other complex release scenarios (e.g. box sets with multiple albums, mixed formats, etc.)
 - Ability to keep a recent local history of retrieved releases (probably just locally in a browser cookie — no complex user account feature)
-- Use Lovable to prototype Discogs Search POC (spike to validate the search -> select release -> duration interaction before committing it to scope; not a code merge into this app)
 - Improve release ID input handling (close the bare-numeric-ID ambiguity where a number can validly match both an unrelated release and an unrelated master, since the two are separate, non-overlapping ID sequences — e.g. by requiring a full URL or an explicit r-prefix, rather than accepting a totally bare number)
 - Add automated test execution against the MVP's test-data set (e.g. Playwright or similar headless browser automation), replacing the MVP's manual case-by-case walkthrough with a re-runnable regression suite that reports pass/fail per requirement ID
 
