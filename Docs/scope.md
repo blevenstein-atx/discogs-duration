@@ -20,6 +20,8 @@
 - Ability to keep a recent local history of retrieved releases (probably just locally in a browser cookie — no complex user account feature)
 - Improve release ID input handling (close the bare-numeric-ID ambiguity where a number can validly match both an unrelated release and an unrelated master, since the two are separate, non-overlapping ID sequences — e.g. by requiring a full URL or an explicit r-prefix, rather than accepting a totally bare number)
 - Add automated test execution against the MVP's test-data set (e.g. Playwright or similar headless browser automation), replacing the MVP's manual case-by-case walkthrough with a re-runnable regression suite that reports pass/fail per requirement ID
+- Improve on-screen instrcutions/examples for entering discogs URL and release IDs.
+- Create a second app page with a lightweight user guide and FAQ.
 
 ## Future
 - Add rudimentary Discogs search support as a user option, for when the user doesn't already know the release ID (Search is complex; not looking to rebuild Discogs' own search UI, but a good use case for chaining multiple API calls in sequence)
@@ -31,3 +33,4 @@
 - Basic API request/response logging (e.g. to Postgres), as a first step toward the APM item above and a foundation for later reports/analytics on usage. Depends on the AWS backend from 2.0 already existing — a static/no-backend app can't write to a database directly from the browser without exposing database credentials to every visitor
 - Reports and analytics built on top of the API logging above, once there's real logged data to work with
 - Add a "Copy to Clipboard" button for the duration results (browser Clipboard API), replacing the MVP's plain-selectable-text approach
+- Ability to save the current release's duration to a queue, add other release durations, and see a grand total durations of all releases added to the queue. Includes the ability to remove a release from the queue and clear the queue.
