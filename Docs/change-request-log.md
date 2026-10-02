@@ -12,6 +12,7 @@ Each row links to the decision-log entry with the full reasoning, and to the com
 | CR-4 | 2026-09-26 | UI-2: fold app name into header, drop separate eyebrow line; RU-9: add explicit release-date formatting rule | Bruce (PRD/Figma update) | Approved | commit `bbfe6f4`, decision-log 2026-09-26 |
 | CR-5 | 2026-09-26 | UI-9: display a build/deploy identifier (footer, lower-left) so a stale cached build can be told apart from the latest deploy | Bruce | Approved | commit `db4e476`, decision-log 2026-09-26 |
 | CR-6 | 2026-09-26 | UI-9 footer was pinned to the browser viewport's lower-left corner (easy to miss, scrolls out of view below the fold); moved into the app's white card frame instead | Bruce's manual testing | Approved | commit `42937a2`, decision-log 2026-09-26 |
+| CR-7 | 2026-10-02 | RU-9c: release dates with only month and year known (day unknown) displayed as "Apr 0, 1978" instead of "Apr, 1978" | Bruce's manual testing | Approved | commit `0a5b8a6`, decision-log 2026-10-02 |
 
 ---
 
