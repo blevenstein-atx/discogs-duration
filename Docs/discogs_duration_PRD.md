@@ -116,7 +116,7 @@ Keeping these intentionally simple and lightweight, no UML or mermaid diagrams o
 **RU-9**. Display release date in this format: Mon D, YYYY.
 **RU-9a**. If the returned release date has only a year, then use YYYY.
 **RU-9b**. If the returned release date has only a month and day, use Mon D.
-**RU-9b**. If the returned date has only a month and year, use Mon, YYYY.
+**RU-9c**. If the returned date has only a month and year, use Mon, YYYY.
 
 ## Duration Calculation Section
 
