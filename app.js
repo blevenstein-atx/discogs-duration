@@ -312,8 +312,21 @@
     if (!raw) return "—";
     const value = String(raw).trim();
 
-    // Full date, e.g. "1978-11-10" -> "Nov 10, 1978"
-    let m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+    // Month and year only, day unknown — Discogs represents this as
+    // "YYYY-MM-00" (a full-date-shaped string with a literal "00" day),
+    // e.g. "1978-04-00" -> "Apr, 1978" (RU-9c). Checked before the full-date
+    // case below, since "00" would otherwise parse as day 0.
+    let m = /^(\d{4})-(\d{2})-00$/.exec(value);
+    if (m) {
+      const [, year, month] = m;
+      const monthIdx = parseInt(month, 10) - 1;
+      if (monthIdx >= 0 && monthIdx < 12) {
+        return `${MONTH_ABBR[monthIdx]}, ${year}`;
+      }
+    }
+
+    // Full date, e.g. "1978-11-10" -> "Nov 10, 1978" (RU-9)
+    m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
     if (m) {
       const [, year, month, day] = m;
       const monthIdx = parseInt(month, 10) - 1;
@@ -322,12 +335,12 @@
       }
     }
 
-    // Year only, e.g. "1992" -> "1992"
+    // Year only, e.g. "1992" -> "1992" (RU-9a)
     if (/^\d{4}$/.test(value)) {
       return value;
     }
 
-    // Month and day only, no year, e.g. "11-10" -> "Nov 10"
+    // Month and day only, no year, e.g. "11-10" -> "Nov 10" (RU-9b)
     m = /^(\d{2})-(\d{2})$/.exec(value);
     if (m) {
       const [, month, day] = m;
