@@ -15,7 +15,7 @@
 - Add Node.js, React (shadcn/ui + Tailwind), and AWS (Lambda + API Gateway) to the architecture
 - Registered custom domain name (probably Cloudflare Registrar)
 - Add Vercel or Netlify to replace GitHub Pages
-- Handling for more edge cases around unpredictable/partial release track time data
+- Handling for more edge cases around unpredictable/partial release track time data. Offer the user an option to calculate incomplete durations.
 - Handling for more multi-album and other complex release scenarios (e.g. box sets with multiple albums, mixed formats, etc.)
 - Ability to keep a recent local history of retrieved releases (probably just locally in a browser cookie — no complex user account feature)
 - Improve release ID input handling (close the bare-numeric-ID ambiguity where a number can validly match both an unrelated release and an unrelated master, since the two are separate, non-overlapping ID sequences — e.g. by requiring a full URL or an explicit r-prefix, rather than accepting a totally bare number)
