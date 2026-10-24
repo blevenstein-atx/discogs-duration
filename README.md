@@ -2,7 +2,7 @@
 
 A small web app that takes a Discogs release (URL or release ID) and calculates the album's total running time from its tracklist — something Discogs itself doesn't display.
 
-**Status:** MVP is built, deployed, and live-tested against the real Discogs API. **Live URL available upon request** — the app calls the Discogs API using a personal access token, so the deployed link is shared privately with trusted people rather than published here.
+**Status:** MVP is built, deployed, and live-tested against the real Discogs API. 
 
 ## About this project
 
@@ -61,7 +61,7 @@ Most AI-coding demos are greenfield-only: generate an app from scratch and stop.
 
 - **Docs as code** ([docslikecode.com](https://www.docslikecode.com)) — scope, requirements, decisions, and test data are plain text/markdown, version-controlled in this repo alongside the app itself, not kept in a separate wiki or notes app.
 - **Figma AI** for the MVP's UI concepts (see [`Docs/figma-concepts/`](Docs/figma-concepts/)) — lightweight AI-assisted design exploration, kept distinct from the app-building tooling. (Plain Figma design files, not Figma Make, which generates its own app code and repo.)
-- **Postman + an OpenAPI spec** ([`postman/`](postman/)) for exercising and documenting the two Discogs endpoints this app uses, ahead of and alongside the app code itself.
+- **Postman + an OpenAPI spec** ([`postman/`](postman/)) for exercising and documenting the Discogs endpoint this app uses, ahead of and alongside the app code itself.
 
 ## Testing
 
