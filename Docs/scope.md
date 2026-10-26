@@ -12,9 +12,9 @@
 - Small set of real release IDs mapped to each supported edge case, to be used as a lighweight test suite
 
 ## 2.0
-- Add Node.js, React (shadcn/ui + Tailwind), and AWS (Lambda + API Gateway) to the architecture
+- Add Node.js, React via Next.js (shadcn/ui + Tailwind), and AWS (Lambda + API Gateway, secrets in AWS Secrets Manager) to the architecture, with infrastructure defined in Terraform
 - Registered custom domain name (probably Cloudflare Registrar)
-- Add Vercel or Netlify to replace GitHub Pages
+- Add Vercel to replace GitHub Pages (full Next.js with SSR; Next.js renders, the Lambda handles all Discogs API calls)
 - Handling for more edge cases around unpredictable/partial release track time data. Offer the user an option to calculate incomplete durations.
 - Handling for more multi-album and other complex release scenarios (e.g. box sets with multiple albums, mixed formats, etc.)
 - Ability to keep a recent local history of retrieved releases (probably just locally in a browser cookie — no complex user account feature)
